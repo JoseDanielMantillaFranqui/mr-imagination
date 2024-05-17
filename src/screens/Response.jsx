@@ -4,6 +4,7 @@ import { useImaginationContext } from "../hooks/useImaginationContext";
 import { GiSandsOfTime } from "react-icons/gi";
 import { FaShareAlt } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
+import { AiOutlineRollback } from "react-icons/ai";
 
 const Response = () => {
 
@@ -38,7 +39,7 @@ const Response = () => {
                 }
                 { response.output.length > 0 && <>
                         <a href={response.output[0]} className="response__button--download">Descargar imagen</a>
-                        <a href={'/'} className="response__button--download">Volver</a>
+                        <a href={'/'} className="response__button--back">Volver  <AiOutlineRollback /></a>
                 </>
                 }
                 {/*<a className="response__button--share">Compartir imagen <FaShareAlt className="share__icon"/> </a>¨*/}
