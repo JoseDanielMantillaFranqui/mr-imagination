@@ -112,7 +112,7 @@ const Home = () => {
                 </div>
                 <img src='/window-image.png' className='window__image'></img>
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
-                    <textarea placeholder='Describe la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
+                    <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
                     <FormControl variant='filled' fullWidth>
                         <SelectLabel id="demo-simple-select-label" className="style__select--label">Estilo de Imagen</SelectLabel>
                         <SelectStyleImg
