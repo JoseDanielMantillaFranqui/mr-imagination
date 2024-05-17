@@ -34,6 +34,7 @@ const SelectStyleImg = styled(Select)`
         border-right: 1px solid black;
         border-bottom: 1px solid black;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
+        border-radius: 0;
         &::before {
           border-bottom: none;
         }
