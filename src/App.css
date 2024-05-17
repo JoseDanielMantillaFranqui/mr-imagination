@@ -71,15 +71,16 @@
 }
 
 .window__form {
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .form__input {
     font-size: 1.5rem;
     padding: 1rem 1rem 1rem 1rem;
-    background-color: #9a9898;
+    background-color: #6a6a6a;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
@@ -96,7 +97,7 @@
 }
 
 .form__input::placeholder {
-    color: rgba(0, 0, 0, 0.593);
+    color: rgba(0, 0, 0, 0.779);
 }
 
 .form__button {
@@ -113,6 +114,8 @@
     border-right: 1px solid black;
     border-bottom: 1px solid black;
     margin-bottom: 2rem;
+    cursor: pointer;
+    user-select: none;
 }
 
 .form__button:active {
@@ -135,6 +138,10 @@
 .window__response--image {
     aspect-ratio: 1/1;
     width: 100%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .window__response--loading {
@@ -227,15 +234,90 @@
     border-left: 1px solid black;
     border-right: 1px solid white;
     border-bottom: 1px solid white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 2rem;
-    font-weight: 700;
 }
 
+.style__select--label {
+    && {
+        color: rgba(0, 0, 0, 0.779);
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+        font-size:1.5rem;
+        font-weight: 600;
+    
+        /* Cambia el color del label en su estado reducido */
+        &.MuiInputLabel-shrink {
+          color: rgba(0, 0, 0, 0.779);
+        }
+      }
+}
+
+.style__select {
+    && {
+        color: #000000;
+        font-size: 1.6rem;
+        font-family: Arial, Helvetica, sans-serif;
+        border-top: 1px solid white;
+        border-left: 1px solid white;
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
+        &::before {
+          border-bottom: none;
+        }
+        &::after {
+          border-bottom: none;
+        }
+        &:hover {
+            border-top: 1px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid white;
+            border-bottom: 1px solid white;
+        }
+    
+        .MuiSvgIcon-root {
+          fill: rgb(0, 0, 0);
+        }
+      }
+}
+
+.style__select--item {
+    && {
+        background-color: #828080;
+        color: #000000; 
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
+
+          font-family: Arial, Helvetica, sans-serif;
+          font-size:1.5rem;
+          border-top: 1px solid white;
+          border-left: 1px solid white;
+          border-right: 1px solid black;
+          border-bottom: 1px solid black;
+          font-style: italic;
+        &:focus {
+          background-color: #505050;
+        }
+        &:hover {
+          background-color: #828080;
+          border-top: 1px solid black;
+          border-left: 1px solid black;
+          border-right: 1px solid white;
+          border-bottom: 1px solid white;
+        }
+        &.Mui-selected {
+          background-color: rgb(78, 78, 78) !important;
+        }
+        &.MuiList-root {
+          background-color: #212121;
+        }
+}
+}
 
 @media screen and (max-width: 480px) {
     .form__input {
@@ -261,11 +343,17 @@
     }
 
     .window__form {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .form__button {
         margin-bottom: 1rem;
     }
     
+}
+
+@media screen and (min-width: 481px) and  (max-width: 1000px) {
+    .interface__window {
+        width: 80%;
+    }
 }

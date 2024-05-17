@@ -40,6 +40,7 @@ const ImaginationProvider = ({children}) => {
     }, [randomNumber])
 
     const [userPrompt, setUserPrompt] = useState('')
+    const [styleImg, setStyleImg] = useState('')
     const [isEmptyUserPrompt, setIsEmptyUserPrompt] = useState(false)
     const textareaChatRef = useRef(null)
 
@@ -76,7 +77,7 @@ const ImaginationProvider = ({children}) => {
       "enhance": true,
       "optimize": true,
       "safe_filter": true,
-      style: 'photographic'
+      style: styleImg
     };
 
     const generateImg = () => {
@@ -89,8 +90,11 @@ const ImaginationProvider = ({children}) => {
         })
     }
 
+    const handleSelectStyleImg = (e) => {
+        setStyleImg(e.target.value)
+    }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response }}>
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg }}>
         {children}
     </ImaginationContext.Provider>
 }
