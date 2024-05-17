@@ -22,8 +22,9 @@ const Response = () => {
                         <GiSandsOfTime className="loading__icon"/>
                     </div>
                 }
-                <a href={response.output[0]} className="response__button--download">Descargar imagen</a>
-                <a href={'/'} className="response__button--download">Volver</a>
+                { response.output > 0 && <><a href={response.output[0]} className="response__button--download">Descargar imagen</a>
+                        <a href={'/'} className="response__button--download">Volver</a> </>
+                }
                 {/*<a className="response__button--share">Compartir imagen <FaShareAlt className="share__icon"/> </a>¨*/}
             </div>       
         </div>           
