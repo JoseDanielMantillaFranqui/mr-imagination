@@ -3,8 +3,22 @@ import '../App.css'
 import { useImaginationContext } from "../hooks/useImaginationContext";
 import { GiSandsOfTime } from "react-icons/gi";
 import { FaShareAlt } from "react-icons/fa";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Response = () => {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      const handlePopState = (event) => {
+            event.preventDefault()
+            window.location.replace('/')
+        }
+  
+      window.addEventListener('popstate', handlePopState);
+
+    }, [navigate]);
+
     const { randomWallPaper, response } = useImaginationContext()
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
@@ -22,8 +36,10 @@ const Response = () => {
                         <GiSandsOfTime className="loading__icon"/>
                     </div>
                 }
-                { response.output.length > 0 && <><a href={response.output[0]} className="response__button--download">Descargar imagen</a>
-                        <a href={'/'} className="response__button--download">Volver</a> </>
+                { response.output.length > 0 && <>
+                        <a href={response.output[0]} className="response__button--download">Descargar imagen</a>
+                        <a href={'/'} className="response__button--download">Volver</a>
+                </>
                 }
                 {/*<a className="response__button--share">Compartir imagen <FaShareAlt className="share__icon"/> </a>¨*/}
             </div>       

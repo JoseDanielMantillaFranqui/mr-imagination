@@ -138,7 +138,7 @@ const Home = () => {
                         <SelectItem className='style__select--item' value='futuristic'>Futurista</SelectItem>
                         <SelectItem className='style__select--item' value='realism'>Realismo</SelectItem>
                         <SelectItem className='style__select--item' value='watercolor'>Acuarela</SelectItem>
-                        <SelectItem className='style__select--item' value='photo-realistic'>Ultra realista</SelectItem>
+                        <SelectItem className='style__select--item' value='photorealistic'>Ultra realista</SelectItem>
 
                         </SelectStyleImg>
                     </FormControl>
