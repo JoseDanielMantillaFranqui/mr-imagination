@@ -63,7 +63,7 @@ const Home = () => {
 
                         </Select>
                     </FormControl>
-                    <button style={{ color: ((isEmptyUserPrompt === false) || (styleImg === '')) ? '#00000053' : '#000' }} className='form__button'>Crear Imagen</button>
+                    <button style={{ color: ((isEmptyUserPrompt === false) || (styleImg === '')) ? '#00000053' : '#000', textShadow: ((isEmptyUserPrompt === false) || (styleImg === '')) ? '1px 1px 2px #cccaca5d' : 'none' }} className='form__button'>Crear Imagen</button>
                 </form>
                 <div className="window__footer">
                     <p className="footer__logo" data-text='<> Daniel Franqui </>'>
