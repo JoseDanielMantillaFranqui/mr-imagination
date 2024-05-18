@@ -26,7 +26,7 @@ const Response = () => {
     <div className='interface'>
         <div className='interface__window'>
             <div className='window__header'>
-                <img src='/window-icon.svg' className='window__icon' />
+                <img src='https://i.gifer.com/yG.gif' className='window__icon' />
                 <h1 className='window__title'>Mr. Imagination</h1>
             </div>
             <div className="window__response">
