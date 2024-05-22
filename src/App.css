@@ -261,7 +261,7 @@
 
 .window__footer {
     width: 100%;
-    height: 100px;
+    height: 80px;
     background-color: grey;
     border-top: 1px solid white;
     border-left: 1px solid white;
@@ -275,6 +275,7 @@
     align-items: center;
     gap: 2rem;
     text-decoration: none;
+    text-align: center;
 }
 
 .window__footer:active {
@@ -282,6 +283,14 @@
     border-left: 1px solid black;
     border-right: 1px solid white;
     border-bottom: 1px solid white;
+}
+
+.window__footer:hover {
+    background-color: rgb(110, 110, 110);
+}
+
+#menu- .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    background-color: #00000010;
 }
 
 @media screen and (max-width: 480px) {

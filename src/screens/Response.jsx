@@ -23,7 +23,7 @@ const Response = () => {
     const { randomWallPaper, response } = useImaginationContext()
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
-    <div className='interface'>
+    <div className='interface' style={{ padding: '20rem 0' }}>
         <div className='interface__window'>
             <div className='window__header'>
                 <img src='https://i.gifer.com/yG.gif' className='window__icon' />

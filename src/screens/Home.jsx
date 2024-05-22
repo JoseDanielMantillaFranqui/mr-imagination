@@ -14,12 +14,13 @@ const SelectLabel = styled(InputLabel)`
         color: rgba(0, 0, 0, 0.779);
         font-family: Arial, Helvetica, sans-serif;
         font-style: italic;
-        font-size:1.5rem;
+        font-size:1.8rem;
         font-weight: 600;
     
         /* Cambia el color del label en su estado reducido */
         &.MuiInputLabel-shrink {
           color: rgba(0, 0, 0, 0.779);
+          font-size: 1.3rem;
         }
       }
 `
@@ -35,13 +36,16 @@ const SelectStyleImg = styled(Select)`
         border-bottom: 1px solid black;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
         border-radius: 0;
-        &::before {
+        &:before {
           border-bottom: none;
         }
-        &::after {
+        &:after {
           border-bottom: none;
         }
         &:hover {
+          border-bottom: none;
+        }
+        &:active {
             border-top: 1px solid black;
             border-left: 1px solid black;
             border-right: 1px solid white;
@@ -59,7 +63,6 @@ const SelectItem = styled(MenuItem)`
         background-color: #828080;
         color: #000000; 
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
-
           font-family: Arial, Helvetica, sans-serif;
           font-size:1.5rem;
           border-top: 1px solid white;
@@ -71,7 +74,9 @@ const SelectItem = styled(MenuItem)`
           background-color: #505050;
         }
         &:hover {
-          background-color: #828080;
+          background-color: #6a6868;
+        }
+        &:active {
           border-top: 1px solid black;
           border-left: 1px solid black;
           border-right: 1px solid white;
