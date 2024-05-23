@@ -11,10 +11,11 @@ const ImaginationProvider = ({children}) => {
 
     const [randomWallPaper, setRandomWallPaper] = useState('')
     const [randomNumber] = useState(() => {
-        return Math.floor((Math.random() * 10) + 1)
+        return Math.floor((Math.random() * 20) + 1)
     })
 
     useEffect(() => {
+        console.log(randomNumber)
         switch (randomNumber) {
             case 1: 
                 return setRandomWallPaper('https://i.gifer.com/g3Ys.gif')
@@ -34,6 +35,28 @@ const ImaginationProvider = ({children}) => {
                 return setRandomWallPaper('https://i.gifer.com/xK.gif')
             case 9:
                 return setRandomWallPaper('https://i.gifer.com/Z5aE.gif')
+            case 10:
+                return setRandomWallPaper('https://i.gifer.com/1ka4.gif')
+            case 11:
+                return setRandomWallPaper('https://i.gifer.com/FM9Y.gif')
+            case 12:
+                return setRandomWallPaper('https://i.gifer.com/fxk4.gif')
+            case 13:
+                return setRandomWallPaper('https://i.gifer.com/SlxH.gif')
+            case 14:
+                return setRandomWallPaper('https://i.gifer.com/2zFo.gif')
+            case 15:
+                return setRandomWallPaper('https://i.gifer.com/6vIk.gif')
+            case 16:
+                return setRandomWallPaper('https://i.gifer.com/WG6.gif')
+            case 17:
+                return setRandomWallPaper('https://i.gifer.com/KTe5.gif')
+            case 18:
+                return setRandomWallPaper('https://i.gifer.com/YSx6.gif')
+            case 19:
+                return setRandomWallPaper('https://i.gifer.com/7U5f.gif')
+            case 20:
+                return setRandomWallPaper('https://i.gifer.com/NfHy.gif')
             default:
                 return setRandomWallPaper('https://i.gifer.com/fyrV.gif')
         }

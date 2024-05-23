@@ -38,10 +38,11 @@
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid white;
-    border-left: 1px solid white;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 5px white;
+    border-left: 5px white;
+    border-right: 5px black;
+    border-bottom: 5px black;
+    border-style: groove;
     gap: 5px;
 }
 
@@ -289,8 +290,15 @@
     background-color: rgb(110, 110, 110);
 }
 
-#menu- .css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
-    background-color: #00000010;
+#menu- .MuiMenu-paper {
+    background-color: #898888;
+    border: 5px #898888;
+    border-style: groove;
+    border-radius: 0;
+}
+
+#menu- .MuiList-root {
+    padding: 0;
 }
 
 @media screen and (max-width: 480px) {
