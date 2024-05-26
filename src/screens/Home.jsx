@@ -99,24 +99,24 @@ const Home = () => {
 
     
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio } = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert } = useImaginationContext()
 
     const navigate = useNavigate()
 
     const handleSubmitFormCreateImage = (e) => {
       e.preventDefault()
       if (isEmptyUserPrompt === false) {
-        alert('Debes describir la imagen que quieres crear');
+        showAlert('Debes describir la imagen que quieres crear');
         return;
       }
     
       if (styleImg === '') {
-        alert('Debes seleccionar un estilo de imagen');
+        showAlert('Debes seleccionar un estilo de imagen');
         return;
       }
     
       if (aspectRatio === '') {
-        alert('Debes seleccionar una relación de aspecto');
+        showAlert('Debes seleccionar una relación de aspecto');
         return;
       }
 

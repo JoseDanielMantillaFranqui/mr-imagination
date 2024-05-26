@@ -356,6 +356,77 @@
     background-color: #6e6e6e;
 }
 
+.swal2-popup {
+    border: 1px solid #000;
+    border-radius: 0;
+    padding: 0;
+    background: gray;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    font-family: Tahoma, Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.swal2-title {
+    background: linear-gradient(to right, #e5e4e4, #232323);
+    color: black;
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+.swal2-container .swal2-html-container {
+    color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    width: 97%;
+    margin: 0.5rem 0 0.5rem 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+}
+
+.swal2-actions {
+    background: gray;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 .5rem 0;
+}
+
+.swal2-actions .swal2-confirm  {
+    background-color: gray;
+    box-shadow: none !important;
+    color: black;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px 15px;
+    filter: drop-shadow(0);
+    font-size: 14px;
+    border-radius: 0;
+    outline: none;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.swal2-actions .swal2-confirm:hover {
+    background-color: #898989;
+    box-shadow: none;
+}
+
+.swal2-actions .swal2-confirm:active {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
 @media screen and (max-width: 480px) {
     .form__input {
         min-height: 90px;
@@ -398,7 +469,10 @@
     .response__button--back {
         width: 100%;
     }
-    
+
+    .swal2-popup {
+        width: 90%;
+    }
 }
 
 @media screen and (min-width: 481px) and  (max-width: 1000px) {

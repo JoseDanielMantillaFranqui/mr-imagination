@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useContext, useRef } from "react";
 import MonsterApiClient from "monsterapi";
+import Swal from 'sweetalert2'
 
 const ImaginationContext = createContext()
 
@@ -122,8 +123,23 @@ const ImaginationProvider = ({children}) => {
         setAspectRatio(textAspectRatio)
     }
 
+    const showAlert = (errorText) => {
+        Swal.fire({
+            title: 'Formulario Incompleto',
+            text: errorText,
+            confirmButtonText: 'Aceptar',
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content',
+                actions: 'swal2-actions',
+                confirmButton: 'swal2-confirm',
+            }
+        });
+    }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio }}>
+
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert }}>
         {children}
     </ImaginationContext.Provider>
 }
