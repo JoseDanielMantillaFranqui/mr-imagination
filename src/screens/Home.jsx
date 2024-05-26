@@ -3,6 +3,9 @@ import styled from "styled-components";
 import '../App.css'
 import '../App.scss'
 import { useImaginationContext } from "../hooks/useImaginationContext";
+import { FaRegSquareFull } from "react-icons/fa6";
+import { IoPhonePortraitSharp } from "react-icons/io5";
+import { IoPhoneLandscapeSharp } from "react-icons/io5";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -96,13 +99,26 @@ const Home = () => {
 
     
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg } = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio } = useImaginationContext()
 
     const navigate = useNavigate()
 
     const handleSubmitFormCreateImage = (e) => {
       e.preventDefault()
-      if ((isEmptyUserPrompt === false) || (styleImg === '')) return 
+      if (isEmptyUserPrompt === false) {
+        alert('Debes describir la imagen que quieres crear');
+        return;
+      }
+    
+      if (styleImg === '') {
+        alert('Debes seleccionar un estilo de imagen');
+        return;
+      }
+    
+      if (aspectRatio === '') {
+        alert('Debes seleccionar una relación de aspecto');
+        return;
+      }
 
       generateImg()
       navigate('/response')
@@ -147,7 +163,15 @@ const Home = () => {
 
                         </SelectStyleImg>
                     </FormControl>
-                    <button style={{ color: ((isEmptyUserPrompt === false) || (styleImg === '')) ? '#00000053' : '#000', textShadow: ((isEmptyUserPrompt === false) || (styleImg === '')) ? '1px 1px 2px #cccaca5d' : 'none' }} className='form__button'>Crear Imagen</button>
+                    <div className="aspectRatio__container">
+                      <h2 className="aspectRatio__title">Relación de Aspecto</h2>
+                      <div className="aspectRatio__buttons"> 
+                        <div className={`aspectRatio__button ${aspectRatio === 'square' ? 'aspectRatio__button--selected' : ''}`} onClick={() => { handleAspectRatio('square') }}><FaRegSquareFull /></div>
+                        <div className={`aspectRatio__button ${aspectRatio === 'portrait' ? 'aspectRatio__button--selected' : ''}`} onClick={() => { handleAspectRatio('portrait') }}><IoPhonePortraitSharp /></div>
+                        <div className={`aspectRatio__button ${aspectRatio === 'landscape' ? 'aspectRatio__button--selected' : ''}`} onClick={() => { handleAspectRatio('landscape') }}><IoPhoneLandscapeSharp /></div>
+                      </div>
+                    </div>
+                    <button type="submit" style={{ color: ((isEmptyUserPrompt === false) || (styleImg === '') || (aspectRatio === '')) ? '#00000053' : '#000', textShadow: ((isEmptyUserPrompt === false) || (styleImg === '') || (aspectRatio === '')) ? '1px 1px 2px #cccaca5d' : 'none' }} className='form__button'>Crear Imagen</button>
                 </form>
                 <a href="https://daniels-portafolio.vercel.app/" className="window__footer">
                     <p className="footer__logo" data-text='<> Daniel Franqui </>'>

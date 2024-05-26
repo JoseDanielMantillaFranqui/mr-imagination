@@ -64,6 +64,7 @@ const ImaginationProvider = ({children}) => {
 
     const [userPrompt, setUserPrompt] = useState('')
     const [styleImg, setStyleImg] = useState('')
+    const [aspectRatio, setAspectRatio] = useState('')
     const [isEmptyUserPrompt, setIsEmptyUserPrompt] = useState(false)
     const textareaChatRef = useRef(null)
 
@@ -94,7 +95,7 @@ const ImaginationProvider = ({children}) => {
       negprompt: 'unreal, fake, meme, joke, disfigured, poor quality, bad, ugly',
       samples: 1,
       steps: 50,
-      aspect_ratio: 'square',
+      aspect_ratio: aspectRatio,
       guidance_scale: 7.5,
       seed: 2414,
       "enhance": true,
@@ -117,7 +118,12 @@ const ImaginationProvider = ({children}) => {
         setStyleImg(e.target.value)
     }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg }}>
+    const handleAspectRatio = (textAspectRatio) => {
+        setAspectRatio(textAspectRatio)
+    }
+
+
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio }}>
         {children}
     </ImaginationContext.Provider>
 }
