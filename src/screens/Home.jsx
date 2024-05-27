@@ -14,7 +14,7 @@ import Select from '@mui/material/Select';
 
 const SelectLabel = styled(InputLabel)`
         && {
-        color: rgba(0, 0, 0, 0.779);
+        color: rgb(0, 0, 0);
         font-family: Arial, Helvetica, sans-serif;
         font-style: italic;
         font-size:1.8rem;
@@ -106,17 +106,17 @@ const Home = () => {
     const handleSubmitFormCreateImage = (e) => {
       e.preventDefault()
       if (isEmptyUserPrompt === false) {
-        showAlert('Debes describir la imagen que quieres crear');
+        showAlert('Debes <p>describir la imagen</p> que quieres crear');
         return;
       }
     
       if (styleImg === '') {
-        showAlert('Debes seleccionar un estilo de imagen');
+        showAlert('Debes seleccionar un <p>estilo de imagen</p>');
         return;
       }
     
       if (aspectRatio === '') {
-        showAlert('Debes seleccionar una relación de aspecto');
+        showAlert('Debes seleccionar una <p>relación de aspecto</p>');
         return;
       }
 
@@ -164,7 +164,7 @@ const Home = () => {
                         </SelectStyleImg>
                     </FormControl>
                     <div className="aspectRatio__container">
-                      <h2 className="aspectRatio__title">Relación de Aspecto</h2>
+                      <h2 className="aspectRatio__title">Relación de aspecto:</h2>
                       <div className="aspectRatio__buttons"> 
                         <div className={`aspectRatio__button ${aspectRatio === 'square' ? 'aspectRatio__button--selected' : ''}`} onClick={() => { handleAspectRatio('square') }}><FaRegSquareFull /></div>
                         <div className={`aspectRatio__button ${aspectRatio === 'portrait' ? 'aspectRatio__button--selected' : ''}`} onClick={() => { handleAspectRatio('portrait') }}><IoPhonePortraitSharp /></div>

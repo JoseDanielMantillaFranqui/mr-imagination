@@ -125,12 +125,14 @@ const ImaginationProvider = ({children}) => {
 
     const showAlert = (errorText) => {
         Swal.fire({
-            title: 'Formulario Incompleto',
-            text: errorText,
+            title: `<div class='window__header'>
+            <img src='https://cdn-icons-png.flaticon.com/512/6514/6514954.png' class='alert__icon' />
+            <h1 class='window__title'>Formulario Incompleto</h1>
+        </div>`,
+            html: errorText,
             confirmButtonText: 'Aceptar',
             customClass: {
                 popup: 'swal2-popup',
-                title: 'swal2-title',
                 content: 'swal2-content',
                 actions: 'swal2-actions',
                 confirmButton: 'swal2-confirm',
