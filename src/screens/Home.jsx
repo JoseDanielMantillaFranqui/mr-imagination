@@ -130,7 +130,14 @@ const Home = () => {
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' />
                     <h1 className='window__title'>Mr. Imagination</h1>
                 </div>
-                <img src='/window-image.png' className='window__image'></img>
+                <div class="glitch">
+                <img src="/window-image.png" alt="" className="window__image"/>
+                  <div class="glitch__layers">
+                    <div class="glitch__layer"></div>
+                    <div class="glitch__layer"></div>
+                    <div class="glitch__layer"></div>
+                  </div>
+                </div>
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
                     <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
                     <FormControl variant='filled' fullWidth>
