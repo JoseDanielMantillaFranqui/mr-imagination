@@ -118,6 +118,7 @@
     margin-bottom: 2rem;
     cursor: pointer;
     user-select: none;
+    max-width: 100%;
 }
 
 .form__button:active {
@@ -262,14 +263,18 @@
 .window__footer {
     width: 100%;
     height: 80px;
-    background-color: grey;
+    background-color: rgb(128, 128, 128);
+    background-image: url('https://i.gifer.com/XZ5V.gif');
+    background-position: center;
+    background-size: contain;
+    background-blend-mode:soft-light;
     border-top: 1px solid white;
     border-left: 1px solid white;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 2rem;
     font-weight: 700;
+    color: rgb(115, 115, 115);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -286,7 +291,7 @@
 }
 
 .window__footer:hover {
-    background-color: rgb(110, 110, 110);
+    background-color: rgb(112, 112, 112);
 }
 
 #menu- .MuiMenu-paper {
@@ -441,7 +446,69 @@
     padding: 2px;   
 }
 
-@media screen and (max-width: 480px) {
+.footer__logo {
+    font-size: 1.5rem;
+    letter-spacing: .3em;
+    font-weight: bold;
+    font-family: "Press Start 2P", system-ui;;
+    position: relative;
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+      0.025em 0.04em 0 #fffc00;
+    animation: glitch 725ms infinite;
+  }
+  
+  .footer__logo span {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .footer__logo span:first-child {
+    animation: glitch 500ms infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    transform: translate(-0.04em, -0.03em);
+    opacity: 0.75;
+  }
+  
+  .footer__logo span:last-child {
+    animation: glitch 375ms infinite;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    transform: translate(0.04em, 0.03em);
+    opacity: 0.75;
+  }
+  
+  @keyframes glitch {
+    0% {
+      text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+        0.025em 0.04em 0 #fffc00;
+    }
+    15% {
+      text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+        0.025em 0.04em 0 #fffc00;
+    }
+    16% {
+      text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+        -0.05em -0.05em 0 #fffc00;
+    }
+    49% {
+      text-shadow: -0.05em -0.025em 0 #00fffc, 0.025em 0.035em 0 #fc00ff,
+        -0.05em -0.05em 0 #fffc00;
+    }
+    50% {
+      text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+        0 -0.04em 0 #fffc00;
+    }
+    99% {
+      text-shadow: 0.05em 0.035em 0 #00fffc, 0.03em 0 0 #fc00ff,
+        0 -0.04em 0 #fffc00;
+    }
+    100% {
+      text-shadow: -0.05em 0 0 #00fffc, -0.025em -0.04em 0 #fc00ff,
+        -0.04em -0.025em 0 #fffc00;
+    }
+  }
+
+@media screen and (max-width:379px) {
     .form__input {
         min-height: 90px;
     }
@@ -487,10 +554,84 @@
     .swal2-popup {
         width: 90%;
     }
+
+    .footer__logo {
+        word-spacing: -0.5rem;
+        letter-spacing: -0.1rem;
+        font-size: 0.9rem;
+    }
 }
+
+@media screen and (min-width:380px) and (max-width: 480px) {
+    .form__input {
+        min-height: 90px;
+    }
+
+    .interface__window {
+        width: 90%;
+    }
+
+    .window__response {
+        gap: 10px;
+    }
+
+    .response__button--share {
+        min-width: 95%;
+        font-size: 1.6rem;
+    }
+
+    .window__footer {
+        font-size: 1.5rem;
+        height: 50px;
+    }
+
+    .window__form {
+        gap: 1rem;
+    }
+
+    .form__button {
+        margin-bottom: 1rem;
+    }
+
+    .response__button--share {
+        width: 100%;
+    }
+
+    .response__button--download {
+        width: 100%;
+    }
+
+    .response__button--back {
+        width: 100%;
+    }
+
+    .swal2-popup {
+        width: 90%;
+    }
+
+    .footer__logo {
+        letter-spacing: normal;
+        font-size: .9rem;
+    }
+}
+
+
 
 @media screen and (min-width: 481px) and  (max-width: 1000px) {
     .interface__window {
         width: 80%;
+    }
+
+    .footer__logo {
+        word-spacing: -1rem;
+        letter-spacing: .1rem;
+    }
+}
+
+@media screen and (min-width: 1001px) and  (max-width: 1370px) {
+    .footer__logo {
+        letter-spacing: .1rem;
+        word-spacing: -1rem;
+
     }
 }

@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import '../App.css'
-import '../App.scss'
 import { useImaginationContext } from "../hooks/useImaginationContext";
 import { FaRegSquareFull } from "react-icons/fa6";
 import { IoPhonePortraitSharp } from "react-icons/io5";
@@ -174,8 +173,10 @@ const Home = () => {
                     <button type="submit" style={{ color: ((isEmptyUserPrompt === false) || (styleImg === '') || (aspectRatio === '')) ? '#00000053' : '#000', textShadow: ((isEmptyUserPrompt === false) || (styleImg === '') || (aspectRatio === '')) ? '1px 1px 2px #cccaca5d' : 'none' }} className='form__button'>Crear Imagen</button>
                 </form>
                 <a href="https://daniels-portafolio.vercel.app/" className="window__footer">
-                    <p className="footer__logo" data-text='<> Daniel Franqui </>'>
-                        {'<> Daniel Franqui </>'}
+                    <p className="footer__logo" data-text="<> Daniel Franqui </>">
+                      <span aria-hidden="true">{ '<> Daniel Franqui </>'}</span>
+                        { '<> Daniel Franqui </>'}
+                      <span aria-hidden="true">{ '<> Daniel Franqui </>'}</span>
                     </p>
                 </a>       
             </div>           
