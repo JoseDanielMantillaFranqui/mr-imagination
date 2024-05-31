@@ -533,7 +533,7 @@
 	bottom: 0;
 	background-image: url('/window-image.png');
 	background-repeat: no-repeat;
-	background-position: 0 0;
+	background-position: center;
     background-size: cover;
 }
 .glitch__layer:nth-child(1) {
