@@ -101,7 +101,7 @@ const ImaginationProvider = ({children}) => {
       seed: 2414,
       "enhance": true,
       "optimize": true,
-      "safe_filter": true,
+      "safe_filter": false,
       style: styleImg
     };
 
