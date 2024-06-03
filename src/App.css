@@ -55,6 +55,15 @@
     align-items: center;
 }
 
+.window__header--error {
+    width: 100%;
+    background: linear-gradient(to right, #df8484, #be2c2c);
+    padding: 3px 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
 .window__icon {
     width: 25px;
     height: 25px;
@@ -375,8 +384,8 @@
 }
 
 .swal2-title {
-    background: linear-gradient(to right, #e5e4e4, #232323);
-    color: black;
+    background: linear-gradient(to right, #df8484, #be2c2c);
+    color: white;
     margin: 0;
     padding: 5px 10px;
     font-size: 1.5rem;
@@ -426,6 +435,7 @@
     font-style: italic;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
+    user-select: none;
 }
 
 .swal2-actions .swal2-confirm:hover {
@@ -443,7 +453,17 @@
 .alert__icon {   
     width: 30px;
     height: 30px;
-    padding: 2px;   
+    padding: 2px;
+    filter: invert(1) drop-shadow(1px 1px 2px #8d0303);   
+}
+
+.alert__title {
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    text-shadow: 1px 1px 2px #8d0303;
 }
 
 .footer__logo {
