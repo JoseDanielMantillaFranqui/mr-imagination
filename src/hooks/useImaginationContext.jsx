@@ -1,6 +1,8 @@
 import { createContext, useState, useEffect, useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import MonsterApiClient from "monsterapi";
 import Swal from 'sweetalert2'
+import { AiOutlineRollback } from "react-icons/ai";
 
 const ImaginationContext = createContext()
 
@@ -16,7 +18,6 @@ const ImaginationProvider = ({children}) => {
     })
 
     useEffect(() => {
-        console.log(randomNumber)
         switch (randomNumber) {
             case 1: 
                 return setRandomWallPaper('https://i.gifer.com/g3Ys.gif')
@@ -112,6 +113,7 @@ const ImaginationProvider = ({children}) => {
         })
         .catch((error) => {
             console.error('Error:', error);
+            showErrorAlert(`<br><p>La imagen no pudo ser creada: ${error}</p><br><a href="/" class="error__button--back"> Volver </a>`)
         })
     }
 
@@ -140,8 +142,31 @@ const ImaginationProvider = ({children}) => {
         });
     }
 
+    const showErrorAlert = (errorText) => {
+        Swal.fire({
+            title: `<div class='window__header--error'>
+            <img src='https://cdn-icons-png.flaticon.com/512/6514/6514954.png' class='alert__icon' />
+            <h1 class='alert__title'>Error</h1>
+        </div>`,
+            html: errorText,
+            showConfirmButton: false,
+            customClass: {
+                popup: 'swal2-popup',
+                content: 'swal2-content',
+                actions: 'swal2-actions',
+                confirmButton: 'swal2-confirm',
+            }
+        });
+    }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert }}>
+    const [isFormCompleted, setIsFormCompleted] = useState(false)
+
+    const checkIsFormCompleted = () => {
+        setIsFormCompleted(true)
+    }
+
+
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted }}>
         {children}
     </ImaginationContext.Provider>
 }

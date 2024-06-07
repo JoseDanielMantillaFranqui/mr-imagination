@@ -20,7 +20,13 @@ const Response = () => {
 
     }, [navigate]);
 
-    const { randomWallPaper, response } = useImaginationContext()
+    const { randomWallPaper, response, isFormCompleted } = useImaginationContext()
+
+    useEffect(() => {
+        if (isFormCompleted === false) {
+            return navigate('/')
+        } 
+    }, [isFormCompleted])
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
     <div className='interface' style={{ padding: '20rem 0' }}>

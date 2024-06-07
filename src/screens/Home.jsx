@@ -98,7 +98,7 @@ const Home = () => {
 
     
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert } = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted } = useImaginationContext()
 
     const navigate = useNavigate()
 
@@ -120,6 +120,7 @@ const Home = () => {
       }
 
       generateImg()
+      checkIsFormCompleted()
       navigate('/response')
     }
 
