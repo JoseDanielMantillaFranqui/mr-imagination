@@ -106,7 +106,7 @@
 .form__input {
     font-size: 1.5rem;
     padding: 1rem 1rem 1rem 1rem;
-    background-color: #6a6a6a;
+    background-color: gray;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
@@ -124,7 +124,8 @@
 }
 
 .form__input::placeholder {
-    color: rgba(0, 0, 0, 0.779);
+    color: rgb(0, 0, 0);
+    font-weight: 700;
 }
 
 .form__input__container {
@@ -142,6 +143,7 @@
     border-left: 2px inset rgb(145, 145, 145);
     border-right: 2px inset rgb(168, 166, 166);
     border-bottom: 2px inset rgb(156, 155, 155);
+    background-color: #6a6a6a;
 }
 
 .form__input__container:has(.form__input:focus) {
