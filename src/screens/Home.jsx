@@ -17,14 +17,40 @@ const SelectLabel = styled(InputLabel)`
         font-family: Arial, Helvetica, sans-serif;
         font-style: italic;
         font-size:1.8rem;
+        width: 70%;
+        text-align: center;
         font-weight: 600;
+        white-space: wrap;
+        margin-top: 0.5rem;
+
+        @media screen and (max-width: 480px) {
+          text-align: left;
+          margin-top: 0;
+      }
+
+      @media screen and (min-width: 481px) and (max-width: 1000px) {
+          text-align: left;
+          margin-top: 0;
+          width: 100%;
+      }
     
         /* Cambia el color del label en su estado reducido */
         &.MuiInputLabel-shrink {
           color: rgba(0, 0, 0, 0.779);
           font-size: 1.3rem;
+          margin-top: 0;
         }
       }
+`
+
+const SelectForm = styled(FormControl)`
+  width: 34%;
+  min-height: 100%;
+  max-height: 130px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
 `
 
 const SelectStyleImg = styled(Select)`
@@ -39,6 +65,7 @@ const SelectStyleImg = styled(Select)`
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
         position: relative;
         border-radius: 0;
+        height: 100%;
         &&:before {
           width: 100%;
     content: "";
@@ -73,6 +100,7 @@ const SelectStyleImg = styled(Select)`
     
         .MuiSvgIcon-root {
           fill: rgb(0, 0, 0);
+          align-self: center;
         }
       }
 `
@@ -175,7 +203,7 @@ const Home = () => {
                     <div className="form__input__container">
                       <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
                     </div>
-                    <FormControl variant='filled' fullWidth>
+                    <SelectForm variant='filled'>
                         <SelectLabel id="demo-simple-select-label" className="style__select--label">Estilo de Imagen</SelectLabel>
                         <SelectStyleImg
                         labelId="demo-simple-select-label"
@@ -203,7 +231,7 @@ const Home = () => {
                         <SelectItem className='style__select--item' value='photorealistic'>Ultra realista</SelectItem>
 
                         </SelectStyleImg>
-                    </FormControl>
+                    </SelectForm>
                     <div className="aspectRatio__container">
                       <h2 className="aspectRatio__title">Relación de aspecto:</h2>
                       <div className="aspectRatio__buttons"> 

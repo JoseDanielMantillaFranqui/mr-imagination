@@ -99,12 +99,16 @@
 .window__form {
     padding-top: 1rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items:normal;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
 .form__input {
     font-size: 1.5rem;
+    min-height: 100%;
     padding: 1rem 1rem 1rem 1rem;
     background-color: gray;
     color: black;
@@ -129,7 +133,7 @@
 }
 
 .form__input__container {
-    width: 100%;
+    width: 30%;
     content: "";
     display: flex;
     border-top: 1px solid white;
@@ -156,6 +160,7 @@
 .form__button {
     width: max-content;
     align-self: center;
+    margin: 0 auto;
     padding: 0.5rem;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -526,7 +531,7 @@
 }
 
 .aspectRatio__title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: rgb(0, 0, 0);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
@@ -535,7 +540,8 @@
 }
 
 .aspectRatio__container {
-    width: 100%;
+    width: 30%;
+    max-height: 130px;
     padding: 1rem;
     background-color: #777777;
     border-top: 3px inset rgb(157, 157, 157);
@@ -552,6 +558,7 @@
     width: 100%;
     content: "";
     height: 100%;
+    max-height: 130px;
     position: absolute;
     padding: 2px;
     top: -3px;
@@ -821,8 +828,13 @@
         min-height: 90px;
     }
 
+    .form__input__container {
+        width: 100%;
+    }
+
     .interface__window {
         width: 90%;
+        flex-direction: column;
     }
 
     .window__response {
@@ -841,6 +853,7 @@
 
     .window__form {
         gap: 1rem;
+        flex-direction: column;
     }
 
     .form__button {
@@ -868,6 +881,14 @@
         letter-spacing: -0.1rem;
         font-size: 0.9rem;
     }
+
+    .aspectRatio__container {
+        width: 100%;
+    }
+
+    .aspectRatio__title {
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (min-width:380px) and (max-width: 480px) {
@@ -875,8 +896,13 @@
         min-height: 90px;
     }
 
+    .form__input__container {
+        width: 100%;
+    }
+
     .interface__window {
         width: 90%;
+        flex-direction: column;
     }
 
     .window__response {
@@ -895,6 +921,7 @@
 
     .window__form {
         gap: 1rem;
+        flex-direction: column;
     }
 
     .form__button {
@@ -921,6 +948,14 @@
         letter-spacing: normal;
         font-size: .9rem;
     }
+
+    .aspectRatio__container {
+        width: 100%;
+    }
+
+    .aspectRatio__title {
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -928,6 +963,14 @@
 @media screen and (min-width: 481px) and  (max-width: 1000px) {
     .interface__window {
         width: 80%;
+    }
+
+    .form__input::placeholder {
+        font-size: 1.4rem;
+    }
+
+    .aspectRatio__title {
+        font-size: 0.9rem;
     }
 
     .footer__logo {
@@ -941,5 +984,8 @@
         letter-spacing: .1rem;
         word-spacing: -1rem;
 
+    }
+    .aspectRatio__title {
+        font-size: 1rem;
     }
 }
