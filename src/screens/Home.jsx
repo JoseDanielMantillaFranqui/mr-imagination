@@ -32,22 +32,39 @@ const SelectStyleImg = styled(Select)`
         color: #000000;
         font-size: 1.6rem;
         font-family: Arial, Helvetica, sans-serif;
-        border-top: 1px solid white;
-        border-left: 1px solid white;
-        border-right: 1px solid black;
-        border-bottom: 1px solid black;
+        border-top: 2px inset white;
+        border-left: 2px inset white;
+        border-right: 2px inset black;
+        border-bottom: 2px inset black;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
+        position: relative;
         border-radius: 0;
-        &:before {
-          border-bottom: none;
+        &&:before {
+          width: 100%;
+    content: "";
+    height: 100%;
+    position: absolute;
+    padding: 2px;
+    top: -3px;
+    left: -3px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
         }
         &:after {
           border-bottom: none;
         }
-        &:hover {
-          border-bottom: none;
+        &&:hover {
+        border-bottom: 2px inset black;
         }
-        &:active {
+        &&:active {
+          border-top: 2px inset gray;
+        border-left: 2px inset gray;
+        border-right: 2px inset #bcbcbc;
+        border-bottom: 2px inset #bcbcbc;
+        }
+        &&:active:before {
             border-top: 1px solid black;
             border-left: 1px solid black;
             border-right: 1px solid white;
@@ -67,18 +84,40 @@ const SelectItem = styled(MenuItem)`
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.377);
           font-family: Arial, Helvetica, sans-serif;
           font-size:1.5rem;
-          border-top: 1px solid white;
-          border-left: 1px solid white;
-          border-right: 1px solid black;
-          border-bottom: 1px solid black;
+          border-top: 2px inset white;
+          border-left: 2px inset white;
+          border-right: 2px inset black;
+          border-bottom: 2px inset black;
           font-style: italic;
+          position: relative;
+
+          &&:before {
+          width: 100%;
+    content: "";
+    height: 100%;
+    position: absolute;
+    padding: 1px;
+    top: -2px;
+    left: -3px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+        }
+          
         &:focus {
           background-color: #505050;
         }
         &:hover {
           background-color: #6a6868;
         }
-        &:active {
+        &&:active {
+          border-top: 2px inset gray;
+        border-left: 2px inset gray;
+        border-right: 2px inset #a2a2a2;
+        border-bottom: 2px inset #9e9e9e;
+        }
+        &&:active:before {
           border-top: 1px solid black;
           border-left: 1px solid black;
           border-right: 1px solid white;
@@ -133,7 +172,9 @@ const Home = () => {
                 </div>
                 <img src='/macintoshGlitch.gif' className='window__image' onContextMenu={(e) => e.preventDefault()}/>
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
-                    <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
+                    <div className="form__input__container">
+                      <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
+                    </div>
                     <FormControl variant='filled' fullWidth>
                         <SelectLabel id="demo-simple-select-label" className="style__select--label">Estilo de Imagen</SelectLabel>
                         <SelectStyleImg
