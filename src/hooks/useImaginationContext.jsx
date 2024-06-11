@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import MonsterApiClient from "monsterapi";
 import Swal from 'sweetalert2'
 import { AiOutlineRollback } from "react-icons/ai";
@@ -165,8 +165,24 @@ const ImaginationProvider = ({children}) => {
         setIsFormCompleted(true)
     }
 
+    const [showInterfaceWindow, setShowInterfaceWindow] = useState(true)
+    
+    const handleCloseInterfaceWindow = () => {
+      setShowInterfaceWindow(false)
+    }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted }}>
+    const handleOpenInterfaceWindow = (location) => {
+        if (showInterfaceWindow === true) return
+
+        if (location.pathname.includes('/response')) {
+            window.location.replace('/')
+        } else {
+            setShowInterfaceWindow(true)
+        }
+    }
+
+
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow }}>
         {children}
     </ImaginationContext.Provider>
 }

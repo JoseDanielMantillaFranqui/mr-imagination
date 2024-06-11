@@ -11,18 +11,22 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    box-sizing: border-box;
 }
 
 .interface {
     background-color: #0000005e;
     backdrop-filter: contrast(0.5);
     width: 100%;
-    padding: 15rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    height: 100vh;
+    padding-top: 1rem;
 }
+
+
 
 .window__title {
     font-size: 1.5rem;
@@ -68,6 +72,7 @@
     display: flex;
     gap: 5px;
     align-items: center;
+    position: relative;
 }
 
 .window__header--error {
@@ -93,7 +98,7 @@
     border-right: 2px inset rgb(233, 233, 233);
     border-bottom: 2px inset rgb(232, 232, 232);
     filter: contrast(0.9);
-    aspect-ratio: 16/8;
+    aspect-ratio: 16/6;
 }
 
 .window__form {
@@ -821,9 +826,161 @@
     }
   }
 
+.interface__bar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 50px;
+    background-color: gray;
+    border-top: 2px inset white;
+    border-left: 2px inset white;
+    border-right: 2px inset black;
+    border-bottom: 2px inset black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.interface__bar::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    padding: 2px;
+    top: -3px;
+    left: -3px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.bar__initButton {
+    height: 100%;
+    width: max-content;
+    border-top: 2px inset white;
+    border-left: 2px inset white;
+    border-right: 2px inset black;
+    border-bottom: 2px inset black;
+    background-color: gray;
+    font-family: "Pixelify Sans", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-style: italic;
+    padding: 0 1rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.bar__initButton:active {
+    border-top: 2px inset rgb(157, 157, 157);
+    border-left: 2px inset rgb(153, 150, 150);
+    border-right: 2px inset rgb(188, 188, 188);
+    border-bottom: 2px inset rgb(187, 187, 187);
+}
+
+.bar__initButton::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    padding: 2px;
+    top: -3px;
+    left: -3px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.bar__initButton:active::before {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.bar__timeAndDate {
+    width: max-content;
+    position: relative;
+    height: 100%;
+    border-top: 2px inset rgb(157, 157, 157);
+    border-left: 2px inset rgb(153, 150, 150);
+    border-right: 2px inset rgb(188, 188, 188);
+    border-bottom: 2px inset rgb(187, 187, 187);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    padding: 5px;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.bar__timeAndDate::before {
+    width: 100%;
+    height: 100%;
+    content: "";
+    position: absolute;
+    padding: 2px;
+    top: -3px;
+    left: -3px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.bar__options {
+    position: absolute;
+    width: 200px;
+    background-color: gray;
+    border-top: 2px inset white;
+    border-left: 2px inset white;
+    border-right: 2px inset black;
+    border-bottom: 2px inset black;
+    top: -96px;
+    left: 5px;
+    box-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.option__item {
+    width: 100%;
+    border-top: 2px inset white;
+    border-left: 2px inset white;
+    border-right: 2px inset black;
+    border-bottom: 2px inset black;
+    font-family: "Pixelify Sans", sans-serif;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.option__item:active {
+    border-top: 2px inset rgb(157, 157, 157);
+    border-left: 2px inset rgb(153, 150, 150);
+    border-right: 2px inset rgb(188, 188, 188);
+    border-bottom: 2px inset rgb(187, 187, 187);
+}
+
+.option__icon {
+    width: 40px;
+    height: 100%;
+    background-color: #000000;
+    padding: 2px;
+}
 
 
 @media screen and (max-width:379px) {
+    
+    .window__image {
+        aspect-ratio: 16/7;
+        }
+    
     .form__input {
         min-height: 90px;
     }
@@ -854,6 +1011,7 @@
     .window__form {
         gap: 1rem;
         flex-direction: column;
+        flex-wrap: nowrap;
     }
 
     .form__button {
@@ -892,6 +1050,7 @@
 }
 
 @media screen and (min-width:380px) and (max-width: 480px) {
+    
     .form__input {
         min-height: 90px;
     }
@@ -922,6 +1081,7 @@
     .window__form {
         gap: 1rem;
         flex-direction: column;
+        flex-wrap: nowrap;
     }
 
     .form__button {
@@ -955,6 +1115,10 @@
 
     .aspectRatio__title {
         font-size: 1.5rem;
+    }
+
+    .window__image {
+    aspect-ratio: 16/7;
     }
 }
 

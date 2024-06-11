@@ -5,6 +5,7 @@ import { GiSandsOfTime } from "react-icons/gi";
 import { FaShareAlt } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AiOutlineRollback } from "react-icons/ai";
+import InitBar from "../components/InitBar";
 
 const Response = () => {
 
@@ -29,7 +30,7 @@ const Response = () => {
     }, [isFormCompleted])
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
-    <div className='interface' style={{ padding: '20rem 0' }}>
+    <div className='interface' style={{ height: response.output.length > 0 ? 'max-content' : '100vh', paddingBottom: '5rem', overflow: response.output.length > 0 ? 'clip' : 'hidden', justifyContent: 'center', minHeight: '100vh'}}>
         <div className='interface__window'>
             <div className='window__header'>
                 <img src='https://i.gifer.com/yG.gif' className='window__icon' />
@@ -50,8 +51,9 @@ const Response = () => {
                 }
                 {/*<a className="response__button--share">Compartir imagen <FaShareAlt className="share__icon"/> </a>¨*/}
             </div>       
-        </div>           
+        </div>         
     </div>
+    <InitBar />  
 </main>
 }
 

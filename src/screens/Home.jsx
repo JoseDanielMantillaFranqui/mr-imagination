@@ -9,6 +9,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useState, useEffect } from "react";
+import InitBar from "../components/InitBar";
+import { VscChromeClose } from "react-icons/vsc";
 
 
 const SelectLabel = styled(InputLabel)`
@@ -45,11 +48,11 @@ const SelectLabel = styled(InputLabel)`
 
 const SelectForm = styled(FormControl)`
   width: 34%;
-  min-height: 100%;
   max-height: 130px;
 
   @media screen and (max-width: 480px) {
     width: 100%;
+    min-height: max-content;
   }
 `
 
@@ -160,12 +163,33 @@ const SelectItem = styled(MenuItem)`
 }
 `
 
+const WindowClose = styled(VscChromeClose)`
+  font-size: 1.5rem;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  border-top: 2px inset #f86f6f;
+  border-left: 2px inset #f86f6f;
+  border-right: 2px inset #850404;
+  border-bottom: 2px inset #850404;
+  cursor: pointer;
+
+  &:active {
+    border-top: 2px inset #850404;
+    border-left: 2px inset#850404 ;
+    border-right: 2px inset #f86f6f;
+    border-bottom: 2px inset #f86f6f;
+  }
+`
+
 const Home = () => {
 
 
     
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted } = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow } = useImaginationContext()
 
     const navigate = useNavigate()
 
@@ -188,15 +212,17 @@ const Home = () => {
 
       generateImg()
       checkIsFormCompleted()
+      handleCloseInterfaceWindow()
       navigate('/response')
     }
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
         <div className='interface'>
-            <div className='interface__window'>
+            <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none'}}>
                 <div className='window__header'>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
                     <h1 className='window__title'>Mr. Imagination</h1>
+                    <WindowClose onClick={handleCloseInterfaceWindow}/>
                 </div>
                 <img src='/macintoshGlitch.gif' className='window__image' onContextMenu={(e) => e.preventDefault()}/>
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
@@ -249,8 +275,9 @@ const Home = () => {
                       <span aria-hidden="true">{ '<> Daniel Franqui </>'}</span>
                     </p>
                 </a>       
-            </div>           
+            </div>
         </div>
+        <InitBar />         
     </main>
 }
 
