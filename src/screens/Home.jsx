@@ -19,16 +19,16 @@ const SelectLabel = styled(InputLabel)`
         color: rgb(0, 0, 0);
         font-family: Arial, Helvetica, sans-serif;
         font-style: italic;
-        font-size:1.8rem;
+        font-size: 1.5rem;
         width: 70%;
         text-align: center;
         font-weight: 600;
         white-space: wrap;
-        margin-top: 0.5rem;
 
         @media screen and (max-width: 480px) {
           text-align: left;
           margin-top: 0;
+          font-size: 1.8rem;
       }
 
       @media screen and (min-width: 481px) and (max-width: 1000px) {
@@ -216,10 +216,36 @@ const Home = () => {
       navigate('/response')
     }
 
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setOffset({
+            x: e.clientX - position.x,
+            y: e.clientY - position.y,
+        });
+    };
+
+    const handleMouseMove = (e) => {
+        if (isDragging) {
+            setPosition({
+                x: e.clientX - offset.x,
+                y: e.clientY - offset.y,
+            });
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
+
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
         <div className='interface'>
-            <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none'}}>
-                <div className='window__header'>
+            <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none', top: `${position.y}px`, left: `${position.x}px`}}>
+                <div className='window__header' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
                     <h1 className='window__title'>Mr. Imagination</h1>
                     <WindowClose onClick={handleCloseInterfaceWindow}/>

@@ -181,8 +181,25 @@ const ImaginationProvider = ({children}) => {
         }
     }
 
+    const showAboutAlert = () => {
+        Swal.fire({
+            title: `<div class='window__header'>
+            <img src='https://i.gifer.com/yG.gif' class='window__icon' />
+            <h1 class='window__title'>Mr. Imagination</h1>
+        </div>`,
+            html: `<img src='/earth-help-program.svg' class='about__icon'/> <br>
+            Mr. Imagination es una demostración de una interfaz similar a Windows 95 para generar imágenes mediante el modelo de IA sdxl-base de MonsterAPI.`,
+            customClass: {
+                popup: 'swal2-popup',
+                content: 'swal2-content',
+                actions: 'swal2-actions',
+                confirmButton: 'swal2-confirm',
+                title: 'about__header'
+            }
+        });
+    }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow }}>
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert }}>
         {children}
     </ImaginationContext.Provider>
 }

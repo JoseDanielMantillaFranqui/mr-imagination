@@ -29,10 +29,35 @@ const Response = () => {
         } 
     }, [isFormCompleted])
 
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const [offset, setOffset] = useState({ x: 0, y: 0 });
+
+    const handleMouseDown = (e) => {
+        setIsDragging(true);
+        setOffset({
+            x: e.clientX - position.x,
+            y: e.clientY - position.y,
+        });
+    };
+
+    const handleMouseMove = (e) => {
+        if (isDragging) {
+            setPosition({
+                x: e.clientX - offset.x,
+                y: e.clientY - offset.y,
+            });
+        }
+    };
+
+    const handleMouseUp = () => {
+        setIsDragging(false);
+    };
+
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
     <div className='interface' style={{ height: response.output.length > 0 ? 'max-content' : '100vh', paddingBottom: '5rem', overflow: response.output.length > 0 ? 'clip' : 'hidden', justifyContent: 'center', minHeight: '100vh'}}>
-        <div className='interface__window'>
-            <div className='window__header'>
+        <div className='interface__window' style={{top: `${position.y}px`, left: `${position.x}px`}}>
+            <div className='window__header' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} >
                 <img src='https://i.gifer.com/yG.gif' className='window__icon' />
                 <h1 className='window__title'>Mr. Imagination</h1>
             </div>

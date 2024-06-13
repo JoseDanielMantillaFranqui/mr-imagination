@@ -44,11 +44,15 @@ const InitBar = () => {
         setShowOptions(!showOptions)
     }
 
-    const { handleOpenInterfaceWindow } = useImaginationContext()
+    const { handleOpenInterfaceWindow, showAboutAlert } = useImaginationContext()
     const location = useLocation()
 
     const handleGetCodigoFuente = () => {
         window.location.href = 'https://github.com/JoseDanielMantillaFranqui/mr-imagination'
+    }
+
+    const handleGetAbout = () => {
+        showAboutAlert()
     }
 
     return <div className="interface__bar">
@@ -61,12 +65,16 @@ const InitBar = () => {
     </div>
     <ul className="bar__options" style={{ display: showOptions === true ? 'flex' : 'none'}}>
         <li className='option__item' onClick={() => {handleOpenInterfaceWindow(location)}}>
-        <img src='https://i.gifer.com/yG.gif' className='option__icon' onContextMenu={(e) => e.preventDefault()} />
+        <img src='https://i.gifer.com/yG.gif' className='option__icon option__icon--folder' onContextMenu={(e) => e.preventDefault()} />
             Mr. Imagination
         </li>
         <li className='option__item' onClick={handleGetCodigoFuente}>
-            <FaGithub style={{ fontSize: '40px', background: '#000', backgroundBlendMode: 'soft-light', color: 'wheat'}}/>
+            <img src='/Folder.svg' className='option__icon'/>
             Código fuente
+        </li>
+        <li className='option__item' onClick={handleGetAbout}>
+            <img src='/earth-help-program.svg' className='option__icon'/>
+            Acerca de
         </li>
     </ul>
   </div>  
