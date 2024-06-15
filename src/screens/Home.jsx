@@ -9,9 +9,10 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState, useEffect } from "react";
 import InitBar from "../components/InitBar";
 import { VscChromeClose } from "react-icons/vsc";
+import { useState, useEffect } from "react";
+import useDeviceType from "../hooks/useDeviceType";
 
 
 const SelectLabel = styled(InputLabel)`
@@ -241,9 +242,10 @@ const Home = () => {
         setIsDragging(false);
     };
 
+    const isLaptop = useDeviceType()
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
-        <div className='interface'>
+        <div className={`interface ${isLaptop === true ? 'interface--laptop' : ''}`}>
             <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none', top: `${position.y}px`, left: `${position.x}px`}}>
                 <div className='window__header' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />

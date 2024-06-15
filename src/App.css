@@ -917,6 +917,9 @@
     align-items: end;
     padding: 5px;
     font-family: "VT323", monospace;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    font-size: 1.1rem;
 }
 
 .bar__timeAndDate::before {
@@ -955,7 +958,6 @@
     border-right: 2px inset black;
     border-bottom: 2px inset black;
     font-family: "VT323", monospace;
-    font-style: italic;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -1182,7 +1184,7 @@
         font-size: 1rem;
     }
 
-    .interface {
+    .interface--laptop {
         height: 115vh;
     }
 }

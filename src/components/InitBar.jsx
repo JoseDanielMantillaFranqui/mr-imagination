@@ -53,6 +53,7 @@ const InitBar = () => {
 
     const handleGetAbout = () => {
         showAboutAlert()
+        setShowOptions(false)
     }
 
     return <div className="interface__bar">
@@ -60,11 +61,11 @@ const InitBar = () => {
       Inicio
     </button>
     <div className="bar__timeAndDate">
-      <p>{date}</p>
       <p>{time}</p>
+      <p>{date}</p>
     </div>
     <ul className="bar__options" style={{ display: showOptions === true ? 'flex' : 'none'}}>
-        <li className='option__item' onClick={() => {handleOpenInterfaceWindow(location)}}>
+        <li className='option__item' onClick={() => {handleOpenInterfaceWindow(location); setShowOptions(false)}}>
         <img src='https://i.gifer.com/yG.gif' className='option__icon option__icon--folder' onContextMenu={(e) => e.preventDefault()} />
             Mr. Imagination
         </li>
