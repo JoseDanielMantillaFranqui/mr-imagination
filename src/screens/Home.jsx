@@ -220,7 +220,7 @@ const Home = () => {
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
         <div className={`interface ${isLaptop === true ? 'interface--laptop' : ''}`}>
-            <Draggable handle=".window__header">
+            <Draggable handle=".window__header" bounds=".interface">
                 <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none'}}>
                 <div className='window__header'>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />

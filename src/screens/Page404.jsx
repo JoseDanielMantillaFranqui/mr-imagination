@@ -10,7 +10,7 @@ const Page404 = () => {
     },[])
     return <main className='main__container' style={{ backgroundImage: `url('https://i.gifer.com/y7.gif')`, backgroundRepeat: 'repeat', backgroundSize: 250 }}>
     <div className='interface' style={{justifyContent: 'center'}}>
-        <Draggable handle=".window__header">
+        <Draggable handle=".window__header--error" bounds=".interface">
             <div className='interface__window'>
                 <div className='window__header--error'>
                     <img src='https://cdn-icons-png.flaticon.com/512/6514/6514954.png' className='alert__icon' />

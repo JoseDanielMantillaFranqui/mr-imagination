@@ -32,7 +32,7 @@ const Response = () => {
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
     <div className='interface' style={{ height: response.output.length > 0 ? 'max-content' : '100vh', paddingBottom: '5rem', overflow: response.output.length > 0 ? 'clip' : 'hidden', justifyContent: 'center', minHeight: '100vh'}}>
-        <Draggable handle=".window__header">
+        <Draggable handle=".window__header" bounds=".interface">
             <div className='interface__window'>
             <div className='window__header' >
                 <img src='https://i.gifer.com/yG.gif' className='window__icon' />
