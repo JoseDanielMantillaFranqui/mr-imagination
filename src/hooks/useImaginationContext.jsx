@@ -172,23 +172,21 @@ const ImaginationProvider = ({children}) => {
     }
 
     const handleOpenInterfaceWindow = (location) => {
-        if (showInterfaceWindow === true) return
-
-        if (location.pathname.includes('/response')) {
-            window.location.replace('/')
-        } else {
+        if (location.pathname === '/') {
             setShowInterfaceWindow(true)
+        } else {
+            window.location.replace('/')
         }
     }
 
     const showAboutAlert = () => {
         Swal.fire({
             title: `<div class='window__header'>
-            <img src='https://i.gifer.com/yG.gif' class='window__icon' />
-            <h1 class='window__title'>Mr. Imagination</h1>
+            <img src='/earth-help-program.svg' class='aboutTitle__icon' />
+            <h1 class='window__title'>Acerca de</h1>
         </div>`,
-            html: `<img src='/earth-help-program.svg' class='about__icon'/> <br>
-            Mr. Imagination es una demostración de una interfaz similar a Windows 95 para generar imágenes mediante el modelo de IA sdxl-base de MonsterAPI.`,
+            html: `<img src='https://i.gifer.com/yG.gif' class='about__icon'/> <br>
+            Mr. Imagination es una app web para generar imágenes mediante el modelo de IA sdxl-base de MonsterAPI. Cuenta con una interfaz retro similar a Windows 95.`,
             customClass: {
                 popup: 'swal2-popup',
                 content: 'swal2-content',

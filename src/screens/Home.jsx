@@ -11,8 +11,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InitBar from "../components/InitBar";
 import { VscChromeClose } from "react-icons/vsc";
-import { useState, useEffect } from "react";
 import useDeviceType from "../hooks/useDeviceType";
+import Draggable from 'react-draggable';
 
 
 const SelectLabel = styled(InputLabel)`
@@ -169,26 +169,23 @@ const WindowClose = styled(VscChromeClose)`
   position: absolute;
   top: 5px;
   right: 5px;
-  background: red;
-  color: white;
-  border-top: 2px inset #f86f6f;
-  border-left: 2px inset #f86f6f;
-  border-right: 2px inset #850404;
-  border-bottom: 2px inset #850404;
+  background: gray;
+  color: black;
+  border-top: 2px inset white;
+  border-left: 2px inset white;
+  border-right: 2px inset black;
+  border-bottom: 2px inset black;
   cursor: pointer;
 
   &:active {
-    border-top: 2px inset #850404;
-    border-left: 2px inset#850404 ;
-    border-right: 2px inset #f86f6f;
-    border-bottom: 2px inset #f86f6f;
+    border-top: 2px inset rgb(135, 135, 135);
+    border-left: 2px inset rgb(135, 135, 135);
+    border-right: 2px inset rgb(161, 161, 161);
+    border-bottom: 2px inset rgb(162, 162, 162);
   }
 `
 
 const Home = () => {
-
-
-    
 
     const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow } = useImaginationContext()
 
@@ -217,37 +214,13 @@ const Home = () => {
       navigate('/response')
     }
 
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [isDragging, setIsDragging] = useState(false);
-    const [offset, setOffset] = useState({ x: 0, y: 0 });
-
-    const handleMouseDown = (e) => {
-        setIsDragging(true);
-        setOffset({
-            x: e.clientX - position.x,
-            y: e.clientY - position.y,
-        });
-    };
-
-    const handleMouseMove = (e) => {
-        if (isDragging) {
-            setPosition({
-                x: e.clientX - offset.x,
-                y: e.clientY - offset.y,
-            });
-        }
-    };
-
-    const handleMouseUp = () => {
-        setIsDragging(false);
-    };
-
     const isLaptop = useDeviceType()
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
         <div className={`interface ${isLaptop === true ? 'interface--laptop' : ''}`}>
-            <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none', top: `${position.y}px`, left: `${position.x}px`}}>
-                <div className='window__header' onMouseDown={handleMouseDown} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
+            <Draggable handle=".window__header">
+                <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none'}}>
+                <div className='window__header'>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
                     <h1 className='window__title'>Mr. Imagination</h1>
                     <WindowClose onClick={handleCloseInterfaceWindow}/>
@@ -304,6 +277,8 @@ const Home = () => {
                     </p>
                 </a>       
             </div>
+            </Draggable>
+
         </div>
         <InitBar />         
     </main>

@@ -78,7 +78,7 @@
 
 .window__header--error {
     width: 100%;
-    background: linear-gradient(to right, #df8484, #be2c2c);
+    background: linear-gradient(to right, #e76d6d, #730c0c);
     padding: 3px 5px;
     display: flex;
     gap: 5px;
@@ -90,6 +90,11 @@
     height: 25px;
     background-color: #000000;
     padding: 2px;
+}
+
+.aboutTitle__icon {
+    width: 25px;
+    height: 25px;
 }
 
 .window__image {
@@ -771,7 +776,7 @@
     font-size: 1.5rem;
     letter-spacing: .3em;
     font-weight: bold;
-    font-family: "Press Start 2P", system-ui;;
+    font-family: "Press Start 2P", system-ui;
     position: relative;
     text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
       0.025em 0.04em 0 #fffc00;
@@ -917,7 +922,6 @@
     align-items: end;
     padding: 5px;
     font-family: "VT323", monospace;
-    font-weight: 700;
     letter-spacing: 0.1rem;
     font-size: 1.1rem;
 }
@@ -985,6 +989,15 @@
 
 .about__icon {
     width: 70px;
+}
+
+.page404__icon {
+    display: flex;
+    flex-direction: column;
+    font-family: "Press Start 2P", system-ui;
+    font-size: 6rem;
+    color: #00000053;
+    text-shadow: 1px 1px 2px #cccaca5d;
 }
 
 
