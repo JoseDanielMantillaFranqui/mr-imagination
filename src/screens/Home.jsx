@@ -13,6 +13,7 @@ import InitBar from "../components/InitBar";
 import { VscChromeClose } from "react-icons/vsc";
 import useDeviceType from "../hooks/useDeviceType";
 import Draggable from 'react-draggable';
+import zIndex from "@mui/material/styles/zIndex";
 
 
 const SelectLabel = styled(InputLabel)`
@@ -176,6 +177,7 @@ const WindowClose = styled(VscChromeClose)`
   border-right: 2px inset black;
   border-bottom: 2px inset black;
   cursor: pointer;
+  z-index: 1;
 
   &:active {
     border-top: 2px inset rgb(135, 135, 135);
@@ -223,7 +225,7 @@ const Home = () => {
                 <div className='window__header'>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
                     <h1 className='window__title'>Mr. Imagination</h1>
-                    <WindowClose onClick={handleCloseInterfaceWindow}/>
+                    <WindowClose onClick={handleCloseInterfaceWindow} onTouchEnd={handleCloseInterfaceWindow}/>
                 </div>
                 <img src='/macintoshGlitch.gif' className='window__image' onContextMenu={(e) => e.preventDefault()}/>
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
