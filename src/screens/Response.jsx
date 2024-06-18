@@ -43,7 +43,7 @@ const Response = () => {
                     <img className="window__response--image" src={response.output[0]} />
                     :
                     <div className="window__response--loading">
-                        <GiSandsOfTime className="loading__icon"/>
+                        <img src="https://i.gifer.com/XVo6.gif" className="loading__icon"/>
                     </div>
                 }
                 { response.output.length > 0 && <>
@@ -51,7 +51,6 @@ const Response = () => {
                         <a href={'/'} className="response__button--back">Volver  <AiOutlineRollback /></a>
                 </>
                 }
-                {/*<a className="response__button--share">Compartir imagen <FaShareAlt className="share__icon"/> </a>¨*/}
             </div>       
         </div>  
         </Draggable>       
