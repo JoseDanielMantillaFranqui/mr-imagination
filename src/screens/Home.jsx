@@ -227,7 +227,7 @@ const Home = () => {
                     <h1 className='window__title'>Mr. Imagination</h1>
                     <WindowClose onClick={handleCloseInterfaceWindow} onTouchEnd={handleCloseInterfaceWindow}/>
                 </div>
-                <img src='/macintoshGlitch.gif' className='window__image' onContextMenu={(e) => e.preventDefault()}/>
+                <video src='/window-image.webm' className='window__image' onContextMenu={(e) => e.preventDefault()} autoPlay muted loop width="200" />
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
                     <div className="form__input__container">
                       <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
