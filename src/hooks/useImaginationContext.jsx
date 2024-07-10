@@ -79,11 +79,35 @@ const ImaginationProvider = ({children}) => {
       const handleInputPromptUser = (e) => {
         setUserPrompt(e.target.value)
         setIsEmptyUserPrompt(validatePromptUser(e.target.value))
-        if (textareaChatRef.current.scrollHeight > 60) {
-          textareaChatRef.current.style.height = 'auto';
-          textareaChatRef.current.style.height = `${textareaChatRef.current.scrollHeight}px`;
-        }
+
       }
+
+    const interfaceRef = useRef(null)
+    const [isLaptop, setIsLaptop] = useState(false);
+
+    useEffect(() => {
+      const userAgent = navigator.userAgent;
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+      setIsLaptop(!isMobile);
+    }, []);
+
+    useEffect(() => {
+        if (textareaChatRef.current.scrollHeight > 60) {
+            textareaChatRef.current.style.height = 'auto';
+            textareaChatRef.current.style.height = `${textareaChatRef.current.scrollHeight}px`;
+        }
+
+          if (interfaceRef.current.scrollHeight > window.innerHeight) {
+            interfaceRef.current.style.height= `${interfaceRef.current.scrollHeight + (isLaptop === true ? 20 : 20 )}px`
+         }
+
+         if (userPrompt === '') {
+             if (isLaptop === false) {
+                interfaceRef.current.classList.add('interface--laptop')
+             } else {interfaceRef.current.style.height = '100vh'}
+         }
+    }, [userPrompt])
+
 
 
 
@@ -197,7 +221,7 @@ const ImaginationProvider = ({children}) => {
         });
     }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert }}>
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert, interfaceRef, isLaptop }}>
         {children}
     </ImaginationContext.Provider>
 }

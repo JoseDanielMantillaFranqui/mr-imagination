@@ -11,7 +11,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InitBar from "../components/InitBar";
 import { VscChromeClose } from "react-icons/vsc";
-import useDeviceType from "../hooks/useDeviceType";
 import Draggable from 'react-draggable';
 import zIndex from "@mui/material/styles/zIndex";
 
@@ -189,7 +188,7 @@ const WindowClose = styled(VscChromeClose)`
 
 const Home = () => {
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow } = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, interfaceRef, isLaptop} = useImaginationContext()
 
     const navigate = useNavigate()
 
@@ -216,10 +215,9 @@ const Home = () => {
       navigate('/response')
     }
 
-    const isLaptop = useDeviceType()
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
-        <div className={`interface ${isLaptop === true ? 'interface--laptop' : ''}`}>
+        <div className={`interface`} ref={interfaceRef}>
             <Draggable handle=".window__header" bounds=".interface">
                 <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none'}}>
                 <div className='window__header'>
