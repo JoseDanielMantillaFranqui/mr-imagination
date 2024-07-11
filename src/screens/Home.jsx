@@ -13,6 +13,7 @@ import InitBar from "../components/InitBar";
 import { VscChromeClose } from "react-icons/vsc";
 import Draggable from 'react-draggable';
 import zIndex from "@mui/material/styles/zIndex";
+import useDeviceType from "../hooks/useDeviceType";
 
 
 const SelectLabel = styled(InputLabel)`
@@ -29,7 +30,8 @@ const SelectLabel = styled(InputLabel)`
         @media screen and (max-width: 480px) {
           text-align: left;
           margin-top: 0;
-          font-size: 1.8rem;
+          font-size: 1.7rem;
+          width: 100%;
       }
 
       @media screen and (min-width: 481px) and (max-width: 1000px) {
@@ -188,9 +190,11 @@ const WindowClose = styled(VscChromeClose)`
 
 const Home = () => {
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, interfaceRef, isLaptop} = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow} = useImaginationContext()
 
     const navigate = useNavigate()
+
+    const isLaptop = useDeviceType()
 
     const handleSubmitFormCreateImage = (e) => {
       e.preventDefault()
@@ -217,7 +221,7 @@ const Home = () => {
 
 
     return <main className='main__container' style={{ backgroundImage: `url(${randomWallPaper})` }}>
-        <div className={`interface`} ref={interfaceRef}>
+        <div className={`interface ${isLaptop === true ? 'interface--laptop' : ''}`}>
             <Draggable handle=".window__header" bounds=".interface">
                 <div className='interface__window' style={{display: showInterfaceWindow === true ? 'flex' : 'none'}}>
                 <div className='window__header'>
@@ -228,7 +232,7 @@ const Home = () => {
                 <video src='/window-image.webm' className='window__image' onContextMenu={(e) => e.preventDefault()} autoPlay muted loop width="200" />
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
                     <div className="form__input__container">
-                      <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' ref={textareaChatRef} value={userPrompt} onChange={handleInputPromptUser} ></textarea>
+                      <textarea placeholder='Describe aquí la imagen que quieres crear' cols='1' rows='1' className='form__input' value={userPrompt} onChange={handleInputPromptUser} ></textarea>
                     </div>
                     <SelectForm variant='filled'>
                         <SelectLabel id="demo-simple-select-label" className="style__select--label">Estilo de Imagen</SelectLabel>

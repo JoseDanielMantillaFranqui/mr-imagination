@@ -68,7 +68,6 @@ const ImaginationProvider = ({children}) => {
     const [styleImg, setStyleImg] = useState('')
     const [aspectRatio, setAspectRatio] = useState('')
     const [isEmptyUserPrompt, setIsEmptyUserPrompt] = useState(false)
-    const textareaChatRef = useRef(null)
 
     const validatePromptUser = (value) => {
         const isValid = ((value.length >  0) && (!(value.trim() === ''))) ? true : false 
@@ -81,32 +80,6 @@ const ImaginationProvider = ({children}) => {
         setIsEmptyUserPrompt(validatePromptUser(e.target.value))
 
       }
-
-    const interfaceRef = useRef(null)
-    const [isLaptop, setIsLaptop] = useState(false);
-
-    useEffect(() => {
-      const userAgent = navigator.userAgent;
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
-      setIsLaptop(!isMobile);
-    }, []);
-
-    useEffect(() => {
-        if (textareaChatRef.current.scrollHeight > 60) {
-            textareaChatRef.current.style.height = 'auto';
-            textareaChatRef.current.style.height = `${textareaChatRef.current.scrollHeight}px`;
-        }
-
-          if (interfaceRef.current.scrollHeight > window.innerHeight) {
-            interfaceRef.current.style.height= `${interfaceRef.current.scrollHeight + (isLaptop === true ? 20 : 20 )}px`
-         }
-
-         if (userPrompt === '') {
-             if (isLaptop === false) {
-                interfaceRef.current.classList.add('interface--laptop')
-             } else {interfaceRef.current.style.height = '100vh'}
-         }
-    }, [userPrompt])
 
 
 
@@ -221,7 +194,7 @@ const ImaginationProvider = ({children}) => {
         });
     }
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, textareaChatRef, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert, interfaceRef, isLaptop }}>
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert }}>
         {children}
     </ImaginationContext.Provider>
 }

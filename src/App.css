@@ -121,7 +121,7 @@
 .form__input {
     font-size: 1.5rem;
     min-height: 100%;
-    padding: 1rem 1rem 1rem 1rem;
+    padding: 1rem 1rem 0rem 1rem;
     background-color: gray;
     color: black;
     font-family: Arial, Helvetica, sans-serif;
@@ -131,7 +131,6 @@
     border:none;
     resize: none;
     outline:none;
-    overflow: hidden;
     border-top: 2px inset white;
     border-left: 2px inset white;
     border-right: 2px inset black;
@@ -143,6 +142,52 @@
     color: rgb(0, 0, 0);
     font-weight: 700;
     font-size: 1.2rem;
+}
+
+/* Estiliza el contenedor de la scrollbar */
+.form__input::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
+
+/* Estiliza la pista (track) de la scrollbar */
+.form__input::-webkit-scrollbar-track {
+    background: #808080; /* Color de fondo de la pista */
+    border: 1px solid #000; /* Bordes internos */
+}
+
+/* Estiliza el pulgar (thumb) de la scrollbar */
+.form__input::-webkit-scrollbar-thumb {
+    background:#c0c0c0 ; /* Color del pulgar */
+    border: 1px solid #000; /* Efecto de relieve */
+}
+
+/* Estiliza los botones de arriba y abajo de la scrollbar */
+.form__input::-webkit-scrollbar-button:single-button {
+    background: #c0c0c0;
+    border: 1px solid #000; /* Bordes internos */
+    height: 16px;
+    width: 16px;
+}
+
+/* Botón arriba */
+.form__input::-webkit-scrollbar-button:single-button:vertical:decrement {
+    background: url('/flecha-hacia-arriba.png') #c0c0c0; /* Reemplaza '...' con el ícono en base64 para el botón de abajo */
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode:darken;
+    border-bottom: 0;
+}
+
+/* Botón abajo */
+.form__input::-webkit-scrollbar-button:single-button:vertical:increment {
+    background: url('/flecha-hacia-abajo.png') #c0c0c0; /* Reemplaza '...' con el ícono en base64 para el botón de abajo */
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode:darken;
+    border-top: 0;
 }
 
 .form__input__container {
