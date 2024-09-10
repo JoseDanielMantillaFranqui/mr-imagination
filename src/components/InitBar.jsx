@@ -1,6 +1,7 @@
 import '../App.css'
 import { useState, useEffect } from 'react'
 import { FaGithub } from "react-icons/fa";
+import { SiWindows95 } from "react-icons/si";
 import { useImaginationContext } from '../hooks/useImaginationContext';
 import { useLocation } from 'react-router-dom';
 
@@ -58,6 +59,7 @@ const InitBar = () => {
 
     return <div className="interface__bar">
     <button className="bar__initButton" onClick={handleInitButton}>
+        <SiWindows95 className='bar__initButton__icon'/>
       Inicio
     </button>
     <div className="bar__timeAndDate">

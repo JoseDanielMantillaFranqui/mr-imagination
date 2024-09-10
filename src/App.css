@@ -5,6 +5,16 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@font-face {
+    font-family: 'Ms-Sans-Serif';
+    src: url('/ms_sans_serif.woff') format('truetype');
+}
+
+@font-face {
+    font-family: 'Ms-Sans-Serif-Bold';
+    src: url('/ms_sans_serif_bold.woff') format('truetype');
+}
+
 .main__container {
     width: 100%;
     background-position: center;
@@ -711,7 +721,7 @@
     margin: 0;
     padding: 0;
     font-size: 1.5rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Ms-Sans-Serif", monospace;
     font-style: italic;
     font-weight: 700;
     order: -1;
@@ -724,14 +734,14 @@
 .swal2-container .swal2-html-container {
     color: rgb(0, 0, 0);
     font-size: 1.5rem;
-    width: 97%;
-    margin: 0.5rem 0 0.5rem 0;
+    width: 95%;
+    margin: 2rem auto 1.5rem auto;
     padding: 0 0.5rem;
     text-align: center;
-    font-family:'Courier New', Courier, monospace;
+    font-family: "Ms-Sans-Serif", monospace;
 }
 .swal2-html-container p {
-    font-weight: 700;
+    font-family: "Ms-Sans-Serif-Bold", monospace;
 }
 
 .swal2-actions {
@@ -756,7 +766,7 @@
     outline: none;
     font-size: 1.5rem;
     font-style: italic;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Ms-Sans-Serif-Bold", monospace;
     font-weight: 600;
     user-select: none;
     position: relative;
@@ -806,10 +816,16 @@
 .alert__title {
     font-size: 1.5rem;
     color: rgb(255, 255, 255);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Ms-Sans-Serif-Bold', sans-serif;
     font-weight: 700;
-    font-style: italic;
     text-shadow: 1px 1px 2px #8d0303;
+}
+
+.window__title--about {
+    font-family: 'Ms-Sans-Serif-Bold', sans-serif;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    font-style: normal;
 }
 
 .footer__logo {
@@ -887,6 +903,7 @@
     border-bottom: 2px inset black;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .interface__bar::before {
@@ -911,18 +928,23 @@
     border-right: 2px inset black;
     border-bottom: 2px inset black;
     background-color: gray;
-    font-family: "VT323", monospace;
+    font-family: "Ms-Sans-Serif-Bold", monospace;
     font-size: 1.3rem;
-    font-weight: 700;
-    font-style: italic;
-    padding: 0 1rem;
+    padding: 0 0.8rem;
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bar__initButton__icon {
+    font-size: 2.5rem;
 }
 
 .bar__initButton:active {
-    border-top: 2px inset rgb(157, 157, 157);
-    border-left: 2px inset rgb(153, 150, 150);
+    border-top: 1px solid black;
+    border-left: 1px solid black;
     border-right: 2px inset rgb(188, 188, 188);
     border-bottom: 2px inset rgb(187, 187, 187);
 }
@@ -942,8 +964,8 @@
 }
 
 .bar__initButton:active::before {
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-top: 2px inset rgb(157, 157, 157);
+    border-left: 2px inset rgb(153, 150, 150);
     border-right: 1px solid white;
     border-bottom: 1px solid white;
 }
@@ -951,19 +973,18 @@
 .bar__timeAndDate {
     width: max-content;
     position: relative;
-    height: 100%;
-    border-top: 2px inset rgb(157, 157, 157);
-    border-left: 2px inset rgb(153, 150, 150);
+    height: 90%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
     border-right: 2px inset rgb(188, 188, 188);
     border-bottom: 2px inset rgb(187, 187, 187);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: end;
     padding: 5px;
-    font-family: "VT323", monospace;
-    letter-spacing: 0.1rem;
-    font-size: 1.1rem;
+    font-family: "Ms-Sans-Serif", monospace;
+    font-size: 0.9rem;
 }
 
 .bar__timeAndDate::before {
@@ -974,8 +995,8 @@
     padding: 2px;
     top: -3px;
     left: -3px;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
+    border-top: 2px inset rgb(157, 157, 157);
+    border-left: 2px inset rgb(153, 150, 150);
     border-right: 1px solid white;
     border-bottom: 1px solid white;
 }
@@ -997,7 +1018,7 @@
     border-left: 2px inset white;
     border-right: 2px inset black;
     border-bottom: 2px inset black;
-    font-family: "VT323", monospace;
+    font-family: "Ms-Sans-Serif", monospace;
     display: flex;
     align-items: center;
     gap: 1rem;
