@@ -13,6 +13,8 @@ import InitBar from "../components/InitBar";
 import { VscChromeClose } from "react-icons/vsc";
 import Draggable from 'react-draggable';
 import zIndex from "@mui/material/styles/zIndex";
+import { GoHistory } from "react-icons/go";
+import { GoDownload } from "react-icons/go";
 import useDeviceType from "../hooks/useDeviceType";
 
 
@@ -188,9 +190,65 @@ const WindowClose = styled(VscChromeClose)`
   }
 `
 
+const WindowHistory = styled(GoHistory)`
+   font-size: 1.5rem;
+  position: absolute;
+  top: 5px;
+  right: 35px;
+  background: gray;
+  color: black;
+  border-top: 2px inset white;
+  border-left: 2px inset white;
+  border-right: 2px inset black;
+  border-bottom: 2px inset black;
+  cursor: pointer;
+  z-index: 1;
+
+  &:active {
+    border-top: 2px inset rgb(135, 135, 135);
+    border-left: 2px inset rgb(135, 135, 135);
+    border-right: 2px inset rgb(161, 161, 161);
+    border-bottom: 2px inset rgb(162, 162, 162);
+  }
+`
+
+const WindowDeleteImgHistory = styled(WindowClose)`
+  top: inherit;
+  right: inherit;
+  font-size: 3rem;
+  position: static;
+
+  @media screen and (max-width: 481px) {
+    font-size: 2rem;
+  }
+`
+
+const WindowDownoloadImgHistory = styled(GoDownload)`
+  font-size: 3rem;
+  background: gray;
+  color: black;
+  border-top: 2px inset white;
+  border-left: 2px inset white;
+  border-right: 2px inset black;
+  border-bottom: 2px inset black;
+  cursor: pointer;
+  z-index: 1;
+
+  &:active {
+    border-top: 2px inset rgb(135, 135, 135);
+    border-left: 2px inset rgb(135, 135, 135);
+    border-right: 2px inset rgb(161, 161, 161);
+    border-bottom: 2px inset rgb(162, 162, 162);
+  }
+
+  @media screen and (max-width: 481px) {
+    font-size: 2rem;
+  }
+`
+
 const Home = () => {
 
-    const { randomWallPaper, userPrompt, handleInputPromptUser, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow} = useImaginationContext()
+    const { randomWallPaper, userPrompt, handleInputPromptUser, isEmptyUserPrompt, generateImg, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, showWindowHistory, handleOpenWindowHistory, handleCloseWindowHistory, history, eliminarItemHistory} = useImaginationContext()
 
     const navigate = useNavigate()
 
@@ -228,6 +286,7 @@ const Home = () => {
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
                     <h1 className='window__title'>Mr. Imagination</h1>
                     <WindowClose onClick={handleCloseInterfaceWindow} onTouchEnd={handleCloseInterfaceWindow}/>
+                    <WindowHistory onClick={handleOpenWindowHistory} onTouchEnd={handleOpenWindowHistory}/>
                 </div>
                 <video src='/window-image.webm' className='window__image' onContextMenu={(e) => e.preventDefault()} autoPlay muted loop width="200" />
                 <form className='window__form' onSubmit={handleSubmitFormCreateImage}>
@@ -282,7 +341,33 @@ const Home = () => {
                 </a>       
             </div>
             </Draggable>
+            <Draggable handle=".window__header__history" bounds=".interface">
+              <div className="interface_window_history" style={{display: `${showWindowHistory === true ? 'flex' : 'none'}`, top: `${showInterfaceWindow === true ? '-500px' : '12%'}`}}>
+              <div className='window__header__history'>
+                    <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
+                    <h1 className='window__title'>Mr. Imagination</h1>
+                    <WindowClose onClick={handleCloseWindowHistory} onTouchEnd={handleCloseWindowHistory}/>
+                </div>
+                <ul className="window__image__container">
+                {
+                  history?.length > 0 ? history.map((items, index) => {
+                    return <li className="window__image__item" key={index}>
+                    <img src={items.link} className="window__image__img"/>
+                    <div className="window__image__actionButtons__container">
+                      <a className="window__image__download" href={items.link}>
+                      <WindowDownoloadImgHistory />
+                      </a>
+                      <WindowDeleteImgHistory onClick={() => {eliminarItemHistory(items.id)}} onTouchEnd={() => {eliminarItemHistory(items.id)}}/>
+                    </div>
+                  </li>
+                  }) : <p className="noHistoryMessage">
+                    No se encontró nada en tu historial
+                  </p>
+                }
 
+                </ul>
+              </div>
+            </Draggable>
         </div>
         <InitBar />         
     </main>

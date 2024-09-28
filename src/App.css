@@ -60,6 +60,20 @@
     position: relative;
 }
 
+.interface_window_history {
+    width: 40%;
+    background-color: grey;
+    padding: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 3px inset white;
+    border-left: 3px inset white;
+    border-right: 3px inset black;
+    border-bottom: 3px inset black;
+    gap: 5px;
+    position: relative;
+}
+
 .interface__window::before {
     width: 100%;
     content: "";
@@ -75,7 +89,33 @@
     border-bottom: 1px solid black;
 }
 
+.interface_window_history::before {
+    width: 100%;
+    content: "";
+    height: 100%;
+    position: absolute;
+    padding: 3px;
+    top: -4px;
+    left: -4px;
+    z-index: -1;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
 .window__header {
+    width: 100%;
+    background: linear-gradient(to right, #e5e4e4, #232323);
+    padding: 3px 5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    position: relative;
+    cursor:move;
+}
+
+.window__header__history {
     width: 100%;
     background: linear-gradient(to right, #e5e4e4, #232323);
     padding: 3px 5px;
@@ -155,25 +195,25 @@
 }
 
 /* Estiliza el contenedor de la scrollbar */
-.form__input::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 16px;
     height: 16px;
 }
 
 /* Estiliza la pista (track) de la scrollbar */
-.form__input::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #808080; /* Color de fondo de la pista */
     border: 1px solid #000; /* Bordes internos */
 }
 
 /* Estiliza el pulgar (thumb) de la scrollbar */
-.form__input::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background:#c0c0c0 ; /* Color del pulgar */
     border: 1px solid #000; /* Efecto de relieve */
 }
 
 /* Estiliza los botones de arriba y abajo de la scrollbar */
-.form__input::-webkit-scrollbar-button:single-button {
+::-webkit-scrollbar-button:single-button {
     background: #c0c0c0;
     border: 1px solid #000; /* Bordes internos */
     height: 16px;
@@ -181,7 +221,7 @@
 }
 
 /* Botón arriba */
-.form__input::-webkit-scrollbar-button:single-button:vertical:decrement {
+::-webkit-scrollbar-button:single-button:vertical:decrement {
     background: url('/flecha-hacia-arriba.png') #c0c0c0; /* Reemplaza '...' con el ícono en base64 para el botón de abajo */
     background-size: 80%;
     background-repeat: no-repeat;
@@ -191,7 +231,7 @@
 }
 
 /* Botón abajo */
-.form__input::-webkit-scrollbar-button:single-button:vertical:increment {
+::-webkit-scrollbar-button:single-button:vertical:increment {
     background: url('/flecha-hacia-abajo.png') #c0c0c0; /* Reemplaza '...' con el ícono en base64 para el botón de abajo */
     background-size: 80%;
     background-repeat: no-repeat;
@@ -1062,6 +1102,78 @@
     text-shadow: 1px 1px 2px #cccaca5d;
 }
 
+.noHistoryMessage {
+    font-family: "Press Start 2P", system-ui;
+    font-size: 2rem;
+    color: #00000053;
+    text-shadow: 1px 1px 2px #cccaca5d;
+    margin: 2rem 1rem;
+    text-align: center;
+}
+
+.window__image__container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 2px;
+}
+
+
+
+.window__image__item {
+    width: 100%;
+    background-color: grey;
+    padding: 0.3rem;
+    display: flex;
+    border-top: 3px inset white;
+    border-left: 3px inset white;
+    border-right: 3px inset black;
+    border-bottom: 3px inset black;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1px;
+    
+}
+
+.window__image__item::before {
+    width: 100%;
+    content: "";
+    height: 100%;
+    position: absolute;
+    padding: 3px;
+    top: -4px;
+    left: -4px;
+    z-index: -1;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.window__image__container:first-child {
+    margin-top: 10px;
+}
+
+.window__image__img {
+    width: 60%;
+}
+
+.window__image__actionButtons__container {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.window__image__download {
+    display: flex;
+    text-decoration: none;
+}
 
 @media screen and (max-width:379px) {
     
@@ -1084,6 +1196,10 @@
     .interface__window {
         width: 90%;
         flex-direction: column;
+    }
+
+    .interface_window_history {
+        width: 80%;
     }
 
     .interface {
@@ -1153,6 +1269,14 @@
     .page404__icon {
         font-size: 5rem;
     }
+
+    .window__image__container {
+        max-height: 400px;
+    }
+
+    .noHistoryMessage {
+        font-size: 1.5rem;
+    }
 }
 
 @media screen and (min-width:380px) and (max-width: 480px) {
@@ -1180,6 +1304,10 @@
     .interface__window {
         width: 90%;
         flex-direction: column;
+    }
+ 
+    .interface_window_history {
+        width: 80%;
     }
 
     .window__response {
@@ -1243,6 +1371,14 @@
     .window__image {
     aspect-ratio: 16/7;
     }
+
+    .window__image__container {
+        max-height: 400px;
+    }
+
+    .noHistoryMessage {
+        font-size: 1.5rem;
+    }
 }
 
 
@@ -1250,6 +1386,10 @@
 @media screen and (min-width: 481px) and  (max-width: 1000px) {
     .interface__window {
         width: 80%;
+    }
+    
+    .interface_window_history {
+        width: 70%;
     }
 
     .form__input::placeholder {
@@ -1267,6 +1407,10 @@
 
     .page404__description {
         text-align: center;
+    }
+
+    .window__image__container {
+        max-height: 400px;
     }
 }
 

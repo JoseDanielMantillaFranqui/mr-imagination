@@ -2,13 +2,13 @@ import { createContext, useState, useEffect, useContext, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MonsterApiClient from "monsterapi";
 import Swal from 'sweetalert2'
+import { v4 as generadorID } from 'uuid';
+
 import { AiOutlineRollback } from "react-icons/ai";
 
 const ImaginationContext = createContext()
 
 export const useImaginationContext = () => useContext(ImaginationContext)
-
-
 
 const ImaginationProvider = ({children}) => {
 
@@ -168,6 +168,16 @@ const ImaginationProvider = ({children}) => {
       setShowInterfaceWindow(false)
     }
 
+    const [showWindowHistory, setShowWindowHistory] = useState(false)
+
+    const handleOpenWindowHistory = () => {
+        setShowWindowHistory(true)
+    }
+
+    const handleCloseWindowHistory = () => {
+        setShowWindowHistory(false)
+    }
+
     const handleOpenInterfaceWindow = (location) => {
         if (location.pathname === '/') {
             setShowInterfaceWindow(true)
@@ -193,8 +203,36 @@ const ImaginationProvider = ({children}) => {
             }
         });
     }
+    const previewHistory = localStorage.getItem('userHistory')
+    const [history, setHistory] = useState(previewHistory ? JSON.parse(previewHistory) : [])
 
-    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert }}>
+    useEffect(() => {
+    const newImage = {
+        link: response.output[0],
+        id: generadorID()
+    }
+
+    if (response.output.length > 0) {
+        setHistory((prevHistory) => [...prevHistory, newImage]);
+    }   
+    }, [response])
+
+    useEffect(() => {
+        if (history.length > 0) {
+            localStorage.setItem('userHistory', JSON.stringify(history));
+        }
+        console.log(history)
+    }, [history])
+
+    const eliminarItemHistory = (id) => {
+        const itemDeleted = history.filter((itemH) => {
+            return itemH.id !== id
+        })
+
+        setHistory(itemDeleted)
+    }
+
+    return <ImaginationContext.Provider value={{ randomWallPaper, userPrompt, handleInputPromptUser, isEmptyUserPrompt, generateImg, response, styleImg, handleSelectStyleImg, handleAspectRatio, aspectRatio, showAlert, isFormCompleted, checkIsFormCompleted, showInterfaceWindow, handleCloseInterfaceWindow, handleOpenInterfaceWindow, showAboutAlert, showWindowHistory, handleOpenWindowHistory, handleCloseWindowHistory, history, eliminarItemHistory }}>
         {children}
     </ImaginationContext.Provider>
 }
