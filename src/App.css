@@ -1135,7 +1135,7 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
-    margin: 0 1px;
+    margin: 1px 1px 0 1px;
     
 }
 
@@ -1173,6 +1173,14 @@
 .window__image__download {
     display: flex;
     text-decoration: none;
+}
+
+.window__title__history {
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-style: italic;
 }
 
 @media screen and (max-width:379px) {
@@ -1277,6 +1285,10 @@
     .noHistoryMessage {
         font-size: 1.5rem;
     }
+
+    .window__title__history {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (min-width:380px) and (max-width: 480px) {
@@ -1378,6 +1390,10 @@
 
     .noHistoryMessage {
         font-size: 1.5rem;
+    }
+
+    .window__title__history {
+        font-size: 1.1rem;
     }
 }
 

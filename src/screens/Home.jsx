@@ -188,6 +188,29 @@ const WindowClose = styled(VscChromeClose)`
     border-right: 2px inset rgb(161, 161, 161);
     border-bottom: 2px inset rgb(162, 162, 162);
   }
+
+  &::before {
+    width: 100%;
+    content: "";
+    height: 100%;
+    position: relative;
+    padding: 3px;
+    top: -4px;
+    left: -4px;
+    z-index: 2;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+`
+
+const WindowCloseHistory = styled(WindowClose)`
+  
+
+  @media screen and (max-width: 481px) {
+    top: 0.238rem;
+  }
 `
 
 const WindowHistory = styled(GoHistory)`
@@ -345,8 +368,8 @@ const Home = () => {
               <div className="interface_window_history" style={{display: `${showWindowHistory === true ? 'flex' : 'none'}`, top: `${showInterfaceWindow === true ? '-500px' : '12%'}`}}>
               <div className='window__header__history'>
                     <img src='https://i.gifer.com/yG.gif' className='window__icon' onContextMenu={(e) => e.preventDefault()} />
-                    <h1 className='window__title'>Mr. Imagination</h1>
-                    <WindowClose onClick={handleCloseWindowHistory} onTouchEnd={handleCloseWindowHistory}/>
+                    <h1 className='window__title__history'>Mr. Imagination {'(Historial)'}</h1>
+                    <WindowCloseHistory onClick={handleCloseWindowHistory} onTouchEnd={handleCloseWindowHistory}/>
                 </div>
                 <ul className="window__image__container">
                 {
