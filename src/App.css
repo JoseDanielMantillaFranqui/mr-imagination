@@ -195,7 +195,7 @@
 }
 
 /* Estiliza el contenedor de la scrollbar */
-::-webkit-scrollbar {
+.form__input::-webkit-scrollbar {
     width: 16px;
     height: 16px;
 }
@@ -1121,7 +1121,10 @@
     gap: 2px;
 }
 
-
+.window__image__container::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+}
 
 .window__image__item {
     width: 100%;
