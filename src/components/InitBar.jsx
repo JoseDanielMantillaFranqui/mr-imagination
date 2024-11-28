@@ -66,20 +66,23 @@ const InitBar = () => {
       <p>{time}</p>
       <p>{date}</p>
     </div>
-    <ul className="bar__options" style={{ display: showOptions === true ? 'flex' : 'none'}}>
-        <li className='option__item' onClick={() => {handleOpenInterfaceWindow(location); setShowOptions(false)}}>
-        <img src='https://i.gifer.com/yG.gif' className='option__icon option__icon--folder' onContextMenu={(e) => e.preventDefault()} />
-            Mr. Imagination
-        </li>
-        <li className='option__item' onClick={handleGetCodigoFuente}>
-            <img src='/Folder.svg' className='option__icon'/>
-            Código fuente
-        </li>
-        <li className='option__item' onClick={handleGetAbout}>
-            <img src='/earth-help-program.svg' className='option__icon'/>
-            Acerca de
-        </li>
-    </ul>
+    <div className="bar__init__menu" style={{ display: showOptions === true ? 'flex' : 'none'}}>
+        <span className="bar__init__menu__leftTitle"> Mr. Imagination</span>
+        <ul className="bar__options" >
+            <li className='option__item' style={{ borderTop: 0 }} onClick={() => {handleOpenInterfaceWindow(location); setShowOptions(false)}}>
+            <img src='https://i.gifer.com/yG.gif' className='option__icon option__icon--folder' onContextMenu={(e) => e.preventDefault()} />
+                Mr. Imagination
+            </li>
+            <li className='option__item' onClick={handleGetCodigoFuente}>
+                <img src='/Folder.svg' className='option__icon'/>
+                Código fuente
+            </li>
+            <li className='option__item' onClick={handleGetAbout}>
+                <img src='/earth-help-program.svg' className='option__icon'/>
+                Acerca de
+            </li>
+        </ul>
+    </div>
   </div>  
 }
 

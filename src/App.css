@@ -1042,22 +1042,44 @@
 }
 
 .bar__options {
-    position: absolute;
     width: 200px;
     background-color: gray;
-    top: -136px;
-    left: 5px;
-    box-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
     display: flex;
     flex-direction: column;
+}
+
+.bar__init__menu {
+    position: absolute;
+    top: -132px;
+    left: 5px;
+    box-shadow: 1px 1px 1px #000, -1px -1px 1px #fff;
+    border-top: 2px inset white;
+    border-left: 2px inset white;
+    border-right: 2px inset black;
+    border-bottom: 2px inset black;
+}
+
+.bar__init__menu__leftTitle {
+    color: white;
+    text-shadow: 2px 2px 3px #000;
+    background: linear-gradient(to bottom, #ababab, #232323);
+    flex-direction: column;
+    align-items: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 5px;
+    font-family: "Ms-Sans-Serif", monospace;
+    font-size: 0.9rem;
+    text-align: center;
+    word-spacing: 0.5rem;
+    letter-spacing: 0.07rem;
+    user-select: none;
 }
 
 .option__item {
     width: 100%;
     border-top: 2px inset white;
     border-left: 2px inset white;
-    border-right: 2px inset black;
-    border-bottom: 2px inset black;
     font-family: "Ms-Sans-Serif", monospace;
     display: flex;
     align-items: center;
