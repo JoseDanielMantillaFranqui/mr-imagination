@@ -153,7 +153,11 @@ const ImaginationProvider = ({children}) => {
                 actions: 'swal2-actions',
                 confirmButton: 'swal2-confirm',
             }
-        });
+        }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.replace('/')
+            }
+        })
     }
 
     const [isFormCompleted, setIsFormCompleted] = useState(false)
